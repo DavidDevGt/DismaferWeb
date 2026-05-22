@@ -8,11 +8,35 @@ Rediseño y desarrollo del sitio web de Dismafer, ferretería con más de 20 añ
 
 ## Documentación
 
+### Negocio
 | Documento | Descripción |
 |---|---|
 | [Investigación de Negocio](docs/business/research.md) | Información del negocio, contacto, productos, mercado y competencia |
-| [Guía de Marca](docs/brand/guidelines.md) | Paleta de colores, tipografías, logotipo y versiones |
-| [Arquitectura](docs/architecture/decisions.md) | Stack tecnológico y decisiones de arquitectura |
+
+### Marca
+| Documento | Descripción |
+|---|---|
+| [Guía de Marca](docs/brand/guidelines.md) | Paleta de colores, tipografías, logotipo, versiones y variables CSS |
+
+### Arquitectura y Diseño
+| Documento | Descripción |
+|---|---|
+| [Decisiones de Arquitectura](docs/architecture/decisions.md) | Stack, estructura de carpetas, islands, SEO, integraciones y performance targets |
+| [Setup Astro 5 + pnpm](docs/architecture/astro-setup.md) | Guía completa de instalación, configuración y conceptos clave de Astro 5 |
+| [Investigación UX](docs/design/ux-research.md) | Referentes mundiales, patrones UX, mobile-first y componentes priorizados |
+
+## Stack Tecnológico
+
+```
+Astro 5 + Tailwind CSS v4 + TypeScript + pnpm
+```
+
+| Decisión | Elección | Razón |
+|---|---|---|
+| Framework | Astro 5 | 0 JS por defecto, 100/100 Core Web Vitals, ideal para catálogo |
+| Estilos | Tailwind CSS v4 | Tokens de diseño nativos, mobile-first, rápido |
+| Tipado | TypeScript | Seguridad en content collections y componentes |
+| Package manager | pnpm | 3x más rápido que npm, eficiente en disco |
 
 ## Contacto del Cliente
 

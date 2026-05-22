@@ -2,89 +2,244 @@
 
 ## Estado del Proyecto
 
-> **Fase actual:** Investigación y definición  
-> Stack tecnológico pendiente de decisión con el cliente.
+> **Fase actual:** Investigación y definición de stack  
+> **Stack seleccionado:** Astro 5 + Tailwind CSS v4 + pnpm
 
 ---
 
-## Contexto
+## Stack Tecnológico
 
-El sitio actual (`dismafer.shop`) corre sobre WordPress + WooCommerce. Este proyecto busca rediseñar y posiblemente migrar o extender esa plataforma para mejorar experiencia de usuario, rendimiento y mantenibilidad.
+### Por qué Astro 5
 
----
+| Criterio | Astro 5 | WordPress (actual) | Next.js |
+|---|---|---|---|
+| JavaScript enviado al cliente | ~0 KB por defecto | Alto | 40–85 KB runtime React |
+| Core Web Vitals | 100/100 alcanzable | Variable | Bueno con configuración |
+| Curva de aprendizaje | Baja-media | Baja | Media-alta |
+| Mantenimiento de contenido | CMS headless | Plugin WP | CMS headless |
+| Velocidad de build | Muy rápido | N/A | Medio |
+| Costo de hosting | Bajo (estático) | Hosting PHP | Variable |
 
-## Requerimientos identificados
+**Decisión:** Astro 5 gana en rendimiento, costo y simplicidad para un sitio de ferretería que es principalmente contenido estático con algunos componentes interactivos.
 
-### Funcionales
-- [ ] Catálogo de productos con categorías y búsqueda
-- [ ] Página de cotización / contacto
-- [ ] Integración con WhatsApp (+502 5833-0848)
-- [ ] Información de contacto y ubicación (mapa)
-- [ ] Horarios de atención
-- [ ] Showcase de marcas (Truper, Stanley, etc.)
-
-### No funcionales
-- [ ] Carga rápida en móvil (mayoría de clientes en Guatemala acceden desde móvil)
-- [ ] SEO optimizado para búsquedas locales ("ferretería zona 9 Guatemala")
-- [ ] Fácil actualización de productos por el equipo de Dismafer
-- [ ] Diseño responsive
-
----
-
-## Opciones de Stack (por definir)
-
-| Opción | Pros | Contras |
-|---|---|---|
-| Mantener WordPress + WooCommerce | Sin migración de datos, cliente familiarizado | Deuda técnica, rendimiento limitado |
-| Next.js + headless CMS (Sanity/Contentful) | Rendimiento, SEO, moderna | Mayor complejidad, curva de aprendizaje cliente |
-| Astro + CMS headless | Excelente rendimiento estático, SEO | Menos ecosistema e-commerce nativo |
-| Remix + Shopify | E-commerce robusto, escalable | Costo mensual Shopify |
-
----
-
-## Decisiones tomadas
-
-_Ninguna tomada aún — pendiente de reunión con cliente._
-
----
-
-## Integraciones requeridas
-
-| Integración | Prioridad | Notas |
-|---|---|---|
-| WhatsApp Business API | Alta | Canal principal de ventas |
-| Google Maps | Alta | Mostrar ubicación Zona 9 |
-| Google Analytics / GA4 | Media | Métricas de visitas |
-| Facebook Pixel | Media | Remarketing |
-| Pasarela de pago | Baja | Si se implementa e-commerce |
-
----
-
-## Estructura de URLs propuesta
+### Stack completo
 
 ```
-/                          → Inicio
-/productos                 → Catálogo general
-/productos/{categoria}     → Herramienta eléctrica, manual, PVC, etc.
-/productos/{categoria}/{slug} → Detalle de producto
-/marcas                    → Showcase de marcas
-/contacto                  → Formulario + mapa + WhatsApp
-/nosotros                  → Historia, valores, equipo
+Astro 5
+├── Tailwind CSS v4          → Estilos utilitarios, compatible con design tokens de la marca
+├── TypeScript               → Tipado fuerte en todo el proyecto
+├── pnpm                     → Package manager rápido y eficiente en disco
+└── Integraciones opcionales
+    ├── @astrojs/sitemap     → SEO local (crítico para búsquedas "ferretería zona 9")
+    ├── @astrojs/image       → Optimización de imágenes de productos
+    └── Partytown            → Scripts de terceros (GA4, FB Pixel) fuera del hilo principal
 ```
 
 ---
 
-## Paleta técnica de referencia
+## Setup Inicial con pnpm
 
-Ver [Guía de Marca](../brand/guidelines.md) para variables CSS, colores y tipografías.
+```bash
+# Crear proyecto Astro con pnpm
+pnpm create astro@latest dismafer-web
+
+# Entrar al directorio
+cd dismafer-web
+
+# Agregar Tailwind CSS v4
+pnpm astro add tailwind
+
+# Agregar sitemap
+pnpm astro add sitemap
+
+# Agregar optimización de imágenes
+pnpm astro add image
+
+# Instalar dependencias
+pnpm install
+
+# Servidor de desarrollo
+pnpm dev
+
+# Build de producción
+pnpm build
+
+# Preview del build
+pnpm preview
+```
+
+---
+
+## Estructura de Carpetas
+
+```
+dismafer-web/
+├── public/
+│   ├── favicon.svg
+│   ├── logo.svg                  # Logo Dismafer
+│   └── fonts/                    # Boldu Regular + Montserrat
+├── src/
+│   ├── assets/
+│   │   ├── images/               # Imágenes procesadas por Astro
+│   │   └── icons/                # SVGs de íconos
+│   ├── components/
+│   │   ├── ui/                   # Componentes base reutilizables
+│   │   │   ├── Button.astro
+│   │   │   ├── Badge.astro
+│   │   │   └── Card.astro
+│   │   ├── layout/               # Header, Footer, Nav
+│   │   │   ├── Header.astro
+│   │   │   ├── Footer.astro
+│   │   │   └── MobileMenu.astro
+│   │   ├── home/                 # Secciones exclusivas del homepage
+│   │   │   ├── Hero.astro
+│   │   │   ├── Categories.astro
+│   │   │   ├── Brands.astro
+│   │   │   ├── WhyUs.astro
+│   │   │   └── ContactCTA.astro
+│   │   └── product/              # Componentes de catálogo
+│   │       ├── ProductCard.astro
+│   │       ├── ProductGrid.astro
+│   │       └── CategoryBanner.astro
+│   ├── content/
+│   │   └── products/             # Catálogo de productos (Markdown/MDX o JSON)
+│   ├── layouts/
+│   │   ├── BaseLayout.astro      # HTML base, meta tags, fuentes
+│   │   └── PageLayout.astro      # Layout con header/footer
+│   ├── pages/
+│   │   ├── index.astro           # Homepage
+│   │   ├── productos/
+│   │   │   ├── index.astro       # Catálogo general
+│   │   │   └── [categoria].astro # Herramienta eléctrica, manual, PVC…
+│   │   ├── marcas.astro          # Showcase Truper, Stanley, etc.
+│   │   ├── contacto.astro        # Formulario + mapa + WhatsApp
+│   │   └── nosotros.astro        # Historia y valores Dismafer
+│   └── styles/
+│       └── global.css            # Variables CSS de marca + Tailwind base
+├── astro.config.mjs
+├── tailwind.config.mjs
+├── tsconfig.json
+└── package.json
+```
+
+---
+
+## Islands Architecture — Cuándo usar JavaScript
+
+Astro envía 0 KB de JS por defecto. Solo se activa JavaScript donde el usuario lo necesita.
+
+| Componente | Directiva | Razón |
+|---|---|---|
+| Menú móvil (hamburger) | `client:load` | Se necesita al instante en móvil |
+| Botón WhatsApp flotante | `client:load` | Visible siempre, acción inmediata |
+| Carrusel de marcas | `client:visible` | Solo cargar al entrar en viewport |
+| Formulario de contacto | `client:idle` | Se activa cuando el browser está libre |
+| Búsqueda de productos | `client:load` | Interacción crítica del usuario |
+
+```astro
+<!-- Ejemplo: menú móvil necesita JS inmediato -->
+<MobileMenu client:load />
+
+<!-- Carrusel de marcas: solo cuando el usuario llega ahí -->
+<BrandsCarousel client:visible />
+
+<!-- Formulario: carga diferida, no crítico al inicio -->
+<ContactForm client:idle />
+```
+
+---
+
+## Variables CSS de Marca
 
 ```css
-/* Variables base confirmadas del manual de marca */
---color-primary:  #022E51;   /* Azul marino */
---color-accent:   #F66C26;   /* Naranja */
---color-neutral:  #8C8D91;   /* Gris */
---color-white:    #FFFFFF;
+/* src/styles/global.css */
+@import "tailwindcss";
 
---font-heading:   'Boldu', sans-serif;
---font-body:      'Montserrat', sans-serif;
+:root {
+  /* Colores — Manual de marca Dismafer */
+  --color-primary:     #022E51;   /* Azul marino */
+  --color-accent:      #F66C26;   /* Naranja */
+  --color-neutral:     #8C8D91;   /* Gris */
+  --color-white:       #FFFFFF;
+
+  /* Tipografías */
+  --font-heading:      'Boldu', sans-serif;
+  --font-body:         'Montserrat', sans-serif;
+
+  /* Espaciado base */
+  --section-padding:   5rem 1.5rem;
+  --container-max:     1280px;
+}
 ```
+
+---
+
+## Estructura de URLs
+
+```
+/                              → Homepage
+/productos                     → Catálogo general
+/productos/herramienta-manual  → Categoría
+/productos/herramienta-electrica
+/productos/tuberia-pvc
+/productos/seguridad-industrial
+/productos/pinturas
+/marcas                        → Showcase de marcas (Truper, Stanley…)
+/nosotros                      → Historia, valores, equipo
+/contacto                      → Formulario + mapa + WhatsApp
+```
+
+---
+
+## SEO Local — Prioridad Alta
+
+Dismafer compite en búsquedas locales de Guatemala:
+
+```astro
+<!-- BaseLayout.astro — meta tags esenciales -->
+<meta name="description" content="Ferretería en Zona 9, Ciudad de Guatemala. Herramientas Truper, Stanley, PVC y más. +502 2339-0468" />
+<meta property="og:type" content="business.business" />
+
+<!-- Schema.org LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HardwareStore",
+  "name": "Ferretería Dismafer",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2ª Calle 2-77",
+    "addressLocality": "Zona 9, Ciudad de Guatemala",
+    "addressCountry": "GT"
+  },
+  "telephone": "+502-2339-0468",
+  "openingHours": ["Mo-Fr 07:00-17:30", "Sa 07:00-14:00"],
+  "url": "https://dismafer.shop"
+}
+</script>
+```
+
+---
+
+## Integraciones Pendientes de Decisión
+
+| Integración | Prioridad | Opción A | Opción B |
+|---|---|---|---|
+| WhatsApp | Alta | `wa.me` link directo | WhatsApp Business API |
+| Google Maps | Alta | Google Maps Embed | Leaflet.js (sin API key) |
+| Analytics | Media | Google Analytics 4 | Plausible (privacy-first) |
+| Facebook Pixel | Media | Script directo + Partytown | — |
+| CMS para productos | Alta | Archivos Markdown/JSON | Sanity.io headless |
+| Formulario contacto | Media | Formspree (gratuito) | Netlify Forms |
+
+---
+
+## Performance Targets
+
+| Métrica | Target | Herramienta de medición |
+|---|---|---|
+| Lighthouse Performance | ≥ 95 | PageSpeed Insights |
+| LCP (Largest Contentful Paint) | < 2.5s | Web Vitals |
+| CLS (Cumulative Layout Shift) | < 0.1 | Web Vitals |
+| FID / INP | < 100ms | Web Vitals |
+| JS Bundle size | < 50 KB | Astro build output |
