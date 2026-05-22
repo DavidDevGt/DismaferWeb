@@ -125,6 +125,51 @@
 
 ---
 
+## Manual de Marca (Behance — David Vargas)
+
+> Fuente: https://www.behance.net/gallery/170135355/Manual-de-marca-Ferreteria-Dismafer
+
+### Logotipo
+
+- **Wordmark:** "Dismafer" donde la letra **A** es reemplazada por un ícono de casa (isotipo)
+- **Composición cromática del logo:**
+  - "Dism" → blanco/crema
+  - "A" (casa) → naranja `#F66C26`
+  - "fer" → naranja `#F66C26`
+- **Versiones del logo confirmadas:**
+  | Fondo | Versión del logo |
+  |---|---|
+  | Blanco | Logo en negro oscuro |
+  | Azul marino (`#022E51`) | Logo blanco + casa naranja |
+  | Azul marino (`#022E51`) | Logo blanco + "fer" y casa naranja |
+  | Negro | Logo en blanco |
+
+### Paleta de Colores
+
+| Nombre | HEX | Rol |
+|---|---|---|
+| Azul marino | `#022E51` | Color primario / fondos principales |
+| Naranja | `#F66C26` | Color de acento / isotipo / highlights |
+| Gris | `#8C8D91` | Color neutro / secundario |
+| Blanco | `#FFFFFF` | Fondos claros / texto sobre fondos oscuros |
+
+### Tipografías
+
+| Uso | Fuente |
+|---|---|
+| **Títulos** | Boldu Regular |
+| **Contenidos / Cuerpo** | Montserrat Classic |
+
+### Datos del Manual
+
+- **Diseñador:** David Vargas
+- **Email corporativo:** jvargas@dismafer.shop
+- **RRSS oficial:** @dismaferz9
+- **Web:** www.dismafer.shop
+- **Filosofía de marca:** *"En DISMAFER fusionamos los valores y experiencia de nuestro pasado con el empuje y la fuerza de las nuevas generaciones, para hacer más eficientes las plataformas en las que estamos en contacto contigo."*
+
+---
+
 ## Observaciones para el Proyecto Web
 
 1. **Dominio activo:** dismafer.shop ya existe con WooCommerce — el nuevo proyecto "DismaferWeb" probablemente sea un rediseño o nueva versión del sitio
