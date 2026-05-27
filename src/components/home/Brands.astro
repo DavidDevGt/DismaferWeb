@@ -1,0 +1,33 @@
+---
+import { brands } from '../../data/index';
+import Container from '../ui/Container.astro';
+---
+
+<section class="py-14 bg-white border-y border-gray-100">
+  <Container>
+    <div class="text-center mb-10">
+      <span class="text-accent font-semibold text-sm uppercase tracking-wider">Marcas</span>
+      <h2 class="text-3xl font-heading font-bold text-primary mt-2">
+        Las mejores marcas del mercado
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+      {brands.map((brand) => (
+        <div class="group flex flex-col items-center justify-center p-6 rounded-xl border border-gray-100 hover:border-accent/40 hover:shadow-md transition-all duration-300 bg-white">
+          <span class="text-2xl font-heading font-bold text-primary/30 group-hover:text-accent transition-colors duration-300">
+            {brand.name}
+          </span>
+          <span class="text-xs text-neutral mt-1">{brand.country}</span>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center text-sm text-neutral mt-8">
+      ¿Buscas una marca en específico?{' '}
+      <a href="https://wa.me/50258330848" target="_blank" class="text-accent hover:underline font-semibold">
+        Consúltanos por WhatsApp
+      </a>
+    </p>
+  </Container>
+</section>

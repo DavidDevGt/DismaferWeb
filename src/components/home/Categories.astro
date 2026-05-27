@@ -1,0 +1,61 @@
+---
+import { categories } from '../../data/index';
+import Container from '../ui/Container.astro';
+
+const iconPaths: Record<string, string> = {
+  'herramienta-manual': 'M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z',
+  'herramienta-electrica': 'M13 10V3L4 14h7v7l9-11h-7z',
+  'tuberia-pvc': 'M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18',
+  'seguridad-industrial': 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  'pinturas': 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01',
+  'materiales-construccion': 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+};
+---
+
+<section class="py-16 bg-slate-50">
+  <Container>
+    <div class="text-center mb-12">
+      <span class="text-accent font-semibold text-sm uppercase tracking-wider">Catálogo</span>
+      <h2 class="text-3xl sm:text-4xl font-heading font-bold text-primary mt-2">
+        Todo lo que necesitas
+      </h2>
+      <p class="text-neutral mt-3 max-w-xl mx-auto">
+        Más de 500 productos en 6 categorías principales. Si no lo tenemos, te lo conseguimos.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      {categories.map((cat) => (
+        <a
+          href={`/productos/${cat.slug}`}
+          class="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg border border-gray-100 hover:border-accent/30 transition-all duration-300 no-underline flex flex-col gap-4"
+        >
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
+            <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[cat.slug] ?? iconPaths['herramienta-manual']} />
+            </svg>
+          </div>
+
+          <!-- Text -->
+          <div>
+            <h3 class="font-heading font-semibold text-primary text-lg leading-tight group-hover:text-accent transition-colors">
+              {cat.name}
+            </h3>
+            <p class="text-sm text-neutral mt-1 leading-relaxed line-clamp-2">
+              {cat.description}
+            </p>
+          </div>
+
+          <!-- Arrow -->
+          <div class="flex items-center gap-1 text-accent text-sm font-semibold mt-auto">
+            Ver productos
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,53 @@
+---
+import Container from '../ui/Container.astro';
+
+const reasons = [
+  {
+    icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+    title: '+20 años de experiencia',
+    desc: 'Desde 1987 sirviendo a contratistas, maestros de obra y familias guatemaltecas en Zona 9.',
+  },
+  {
+    icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
+    title: 'Marcas de confianza',
+    desc: 'Truper, Stanley, Tramontina, Toolcraft y más. Solo trabajamos con marcas que garantizan calidad.',
+  },
+  {
+    icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
+    title: 'Atención por WhatsApp',
+    desc: 'Cotiza, consulta disponibilidad y haz tu pedido sin salir de tu obra. Respuesta en minutos.',
+  },
+  {
+    icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z',
+    title: 'Si no lo tenemos, lo conseguimos',
+    desc: 'No te dejamos sin tu material. Si un producto no está en stock, lo buscamos por ti.',
+  },
+];
+---
+
+<section class="py-16 bg-primary text-white">
+  <Container>
+    <div class="text-center mb-12">
+      <span class="text-accent font-semibold text-sm uppercase tracking-wider">¿Por qué Dismafer?</span>
+      <h2 class="text-3xl sm:text-4xl font-heading font-bold mt-2">
+        Tu ferretería de confianza en Zona 9
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {reasons.map((reason) => (
+        <div class="text-center flex flex-col items-center gap-4">
+          <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={reason.icon} />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-xl mb-2">{reason.title}</h3>
+            <p class="text-white/70 text-sm leading-relaxed">{reason.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>
