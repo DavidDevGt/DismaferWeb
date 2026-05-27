@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --color-primary: #022E51;
+  --color-accent: #F66C26;
+  --color-neutral: #8C8D91;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: #022E51;
+  background: #FFFFFF;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
