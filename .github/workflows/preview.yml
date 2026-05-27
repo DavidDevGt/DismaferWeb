@@ -1,8 +1,5 @@
 name: Preview — DismaferWeb
 
-# Genera un reporte de preview en cada PR
-# con resumen de build y artefactos descargables
-
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -21,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      contents: read
 
     steps:
       - name: Checkout
@@ -42,8 +40,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build & collect stats
-        id: build-stats
+      - name: Build
+        id: build
         run: |
           pnpm build 2>&1 | tee build.log
           PAGE_COUNT=$(find dist -name "*.html" | wc -l)
@@ -51,45 +49,61 @@ jobs:
           echo "pages=$PAGE_COUNT" >> $GITHUB_OUTPUT
           echo "size=$DIST_SIZE" >> $GITHUB_OUTPUT
 
-      - name: Run unit tests
+      - name: Unit tests
         id: unit
         run: |
-          pnpm test:ci 2>&1 | tee unit.log
+          pnpm test:ci 2>&1 | tee unit.log || true
           PASS=$(grep -oP '\d+ passed' unit.log | head -1 || echo "0 passed")
-          echo "result=$PASS" >> $GITHUB_OUTPUT
-        continue-on-error: true
+          FAIL=$(grep -oP '\d+ failed' unit.log | head -1 || echo "")
+          echo "pass=$PASS" >> $GITHUB_OUTPUT
+          echo "fail=$FAIL" >> $GITHUB_OUTPUT
 
       - name: Post PR comment
         uses: actions/github-script@v7
         with:
           script: |
-            const pages = '${{ steps.build-stats.outputs.pages }}';
-            const size = '${{ steps.build-stats.outputs.size }}';
-            const unitResult = '${{ steps.unit.outputs.result }}';
+            const pages = '${{ steps.build.outputs.pages }}';
+            const size = '${{ steps.build.outputs.size }}';
+            const unitPass = '${{ steps.unit.outputs.pass }}';
+            const unitFail = '${{ steps.unit.outputs.fail }}';
             const sha = context.sha.substring(0, 7);
+            const branch = context.ref?.replace('refs/heads/', '') || context.head_ref;
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const artifactsUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/tree/ci/test-artifacts/latest`;
 
-            const body = `## 🚀 Preview — DismaferWeb \`${sha}\`
+            const unitStatus = unitFail ? `⚠️ ${unitPass} / ${unitFail}` : `✅ ${unitPass}`;
 
-            | Métrica | Valor |
-            |---------|-------|
-            | 📄 Páginas generadas | **${pages}** |
-            | 📦 Tamaño del build | **${size}** |
-            | 🧪 Tests unitarios | **${unitResult}** |
+            const body = [
+              `## 🚀 Preview — DismaferWeb \`${sha}\``,
+              '',
+              `> Branch: \`${branch}\` → PR #${ context.issue.number }`,
+              '',
+              '### 📊 Métricas del build',
+              '',
+              '| Métrica | Valor |',
+              '|---------|-------|',
+              `| 📄 Páginas generadas | **${pages}** |`,
+              `| 📦 Tamaño del build  | **${size}** |`,
+              `| 🧪 Unit Tests        | **${unitStatus}** |`,
+              '',
+              '### 📥 Artefactos en el repo',
+              '',
+              `Los artefactos de esta rama se guardan en [\`ci/test-artifacts\`](${artifactsUrl}):`,
+              '',
+              '| Artefacto | Ubicación en el repo |',
+              '|-----------|----------------------|',
+              '| 📊 Coverage HTML | `ci/test-artifacts/latest/unit/coverage/index.html` |',
+              '| 📋 JUnit Unit | `ci/test-artifacts/latest/unit/junit-unit.xml` |',
+              '| 🎭 Playwright Report (Desktop) | `ci/test-artifacts/latest/e2e/desktop-chrome/` |',
+              '| 📱 Playwright Report (Pixel 5) | `ci/test-artifacts/latest/e2e/pixel-5/` |',
+              '| 🍎 Playwright Report (iPhone 12) | `ci/test-artifacts/latest/e2e/iphone-12/` |',
+              '',
+              '> Screenshots, videos y traces de Playwright disponibles en cada directorio `test-results/`',
+              '',
+              `---`,
+              `*[Ver workflow completo](${runUrl}) · Generado automáticamente por CI — DismaferWeb*`,
+            ].join('\n');
 
-            ### 📥 Artefactos disponibles
-            Los siguientes artefactos se generan en cada CI run:
-            - 📊 **Coverage Report** — reporte HTML de cobertura de código
-            - 🎭 **Playwright Report** — reporte interactivo con screenshots y videos
-            - 🎬 **Test Artifacts** — screenshots, videos y traces de tests E2E
-            - 📋 **JUnit XML** — para integración con dashboards de calidad
-
-            > 📎 [Ver todos los artefactos en GitHub Actions](${runUrl})
-
-            ---
-            *Generado automáticamente por el workflow de CI — DismaferWeb*`;
-
-            // Buscar comentario previo del bot
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
