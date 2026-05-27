@@ -19,3 +19,11 @@ node_modules/
 
 # Logs
 *.log
+
+# Test artifacts (subidos como GitHub Actions artifacts en CI)
+test-results/
+playwright-report/
+coverage/
+
+# Playwright estado local
+.playwright/
