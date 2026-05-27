@@ -1,0 +1,264 @@
+{
+  "config": {
+    "configFile": "/home/runner/work/DismaferWeb/DismaferWeb/playwright.config.ts",
+    "rootDir": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e",
+    "forbidOnly": true,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/DavidDevGt/DismaferWeb/commit/e2030540795f2506cc861f58f7d7289334530dc2",
+        "commitHash": "e2030540795f2506cc861f58f7d7289334530dc2",
+        "buildHref": "https://github.com/DavidDevGt/DismaferWeb/actions/runs/26531972771"
+      },
+      "gitCommit": {
+        "shortHash": "e203054",
+        "hash": "e2030540795f2506cc861f58f7d7289334530dc2",
+        "subject": "ci: artefactos guardados en rama ci/test-artifacts del repo",
+        "body": "ci: artefactos guardados en rama ci/test-artifacts del repo\n\n## Cambios principales\n\n### Job 'save-to-repo' (nuevo en ci.yml)\n- Corre después de unit-tests y e2e (siempre, aunque fallen)\n- Descarga todos los artifacts de GitHub Actions con actions/download-artifact\n- Los organiza en estructura: YYYY-MM-DD/run-{number}/unit/ + e2e/{device}/\n- Actualiza latest/ con el run más reciente\n- Hace git push a la rama ci/test-artifacts\n- Escribe meta.json por run: sha, branch, actor, resultados\n\n### Capturas Playwright en CI (playwright.config.ts ya tenía)\n- screenshot: 'on'  → captura de CADA step\n- video: 'on'       → video completo por test\n- trace: 'on'       → trace ZIP para playwright.dev/trace\n\n### Estructura en ci/test-artifacts\nci/test-artifacts/\n├── latest/unit/coverage/index.html       ← HTML cobertura\n├── latest/unit/junit-unit.xml\n├── latest/e2e/desktop-chrome/index.html  ← Playwright report\n├── latest/e2e/desktop-chrome/test-results/{test}/\n│   ├── screenshot.png\n│   ├── video.webm\n│   └── trace.zip\n├── latest/e2e/pixel-5/\n└── latest/e2e/iphone-12/\n\n### preview.yml actualizado\n- Comenta en PRs con links directos a ci/test-artifacts/latest/\n\nhttps://claude.ai/code/session_01WcBnSyEEV2S1BMpJKXaTEv\n",
+        "author": {
+          "name": "DismaferWeb CI",
+          "email": "ci@dismafer.shop",
+          "time": 1779908013000
+        },
+        "committer": {
+          "name": "DismaferWeb CI",
+          "email": "ci@dismafer.shop",
+          "time": 1779908013000
+        },
+        "branch": "claude/dismafer-research-UFzmi"
+      }
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/DismaferWeb/DismaferWeb/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/DavidDevGt/DismaferWeb/commit/e2030540795f2506cc861f58f7d7289334530dc2",
+            "commitHash": "e2030540795f2506cc861f58f7d7289334530dc2",
+            "buildHref": "https://github.com/DavidDevGt/DismaferWeb/actions/runs/26531972771"
+          },
+          "gitCommit": {
+            "shortHash": "e203054",
+            "hash": "e2030540795f2506cc861f58f7d7289334530dc2",
+            "subject": "ci: artefactos guardados en rama ci/test-artifacts del repo",
+            "body": "ci: artefactos guardados en rama ci/test-artifacts del repo\n\n## Cambios principales\n\n### Job 'save-to-repo' (nuevo en ci.yml)\n- Corre después de unit-tests y e2e (siempre, aunque fallen)\n- Descarga todos los artifacts de GitHub Actions con actions/download-artifact\n- Los organiza en estructura: YYYY-MM-DD/run-{number}/unit/ + e2e/{device}/\n- Actualiza latest/ con el run más reciente\n- Hace git push a la rama ci/test-artifacts\n- Escribe meta.json por run: sha, branch, actor, resultados\n\n### Capturas Playwright en CI (playwright.config.ts ya tenía)\n- screenshot: 'on'  → captura de CADA step\n- video: 'on'       → video completo por test\n- trace: 'on'       → trace ZIP para playwright.dev/trace\n\n### Estructura en ci/test-artifacts\nci/test-artifacts/\n├── latest/unit/coverage/index.html       ← HTML cobertura\n├── latest/unit/junit-unit.xml\n├── latest/e2e/desktop-chrome/index.html  ← Playwright report\n├── latest/e2e/desktop-chrome/test-results/{test}/\n│   ├── screenshot.png\n│   ├── video.webm\n│   └── trace.zip\n├── latest/e2e/pixel-5/\n└── latest/e2e/iphone-12/\n\n### preview.yml actualizado\n- Comenta en PRs con links directos a ci/test-artifacts/latest/\n\nhttps://claude.ai/code/session_01WcBnSyEEV2S1BMpJKXaTEv\n",
+            "author": {
+              "name": "DismaferWeb CI",
+              "email": "ci@dismafer.shop",
+              "time": 1779908013000
+            },
+            "committer": {
+              "name": "DismaferWeb CI",
+              "email": "ci@dismafer.shop",
+              "time": 1779908013000
+            },
+            "branch": "claude/dismafer-research-UFzmi"
+          }
+        },
+        "id": "Desktop Chrome",
+        "name": "Desktop Chrome",
+        "testDir": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/runner/work/DismaferWeb/DismaferWeb/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/DavidDevGt/DismaferWeb/commit/e2030540795f2506cc861f58f7d7289334530dc2",
+            "commitHash": "e2030540795f2506cc861f58f7d7289334530dc2",
+            "buildHref": "https://github.com/DavidDevGt/DismaferWeb/actions/runs/26531972771"
+          },
+          "gitCommit": {
+            "shortHash": "e203054",
+            "hash": "e2030540795f2506cc861f58f7d7289334530dc2",
+            "subject": "ci: artefactos guardados en rama ci/test-artifacts del repo",
+            "body": "ci: artefactos guardados en rama ci/test-artifacts del repo\n\n## Cambios principales\n\n### Job 'save-to-repo' (nuevo en ci.yml)\n- Corre después de unit-tests y e2e (siempre, aunque fallen)\n- Descarga todos los artifacts de GitHub Actions con actions/download-artifact\n- Los organiza en estructura: YYYY-MM-DD/run-{number}/unit/ + e2e/{device}/\n- Actualiza latest/ con el run más reciente\n- Hace git push a la rama ci/test-artifacts\n- Escribe meta.json por run: sha, branch, actor, resultados\n\n### Capturas Playwright en CI (playwright.config.ts ya tenía)\n- screenshot: 'on'  → captura de CADA step\n- video: 'on'       → video completo por test\n- trace: 'on'       → trace ZIP para playwright.dev/trace\n\n### Estructura en ci/test-artifacts\nci/test-artifacts/\n├── latest/unit/coverage/index.html       ← HTML cobertura\n├── latest/unit/junit-unit.xml\n├── latest/e2e/desktop-chrome/index.html  ← Playwright report\n├── latest/e2e/desktop-chrome/test-results/{test}/\n│   ├── screenshot.png\n│   ├── video.webm\n│   └── trace.zip\n├── latest/e2e/pixel-5/\n└── latest/e2e/iphone-12/\n\n### preview.yml actualizado\n- Comenta en PRs con links directos a ci/test-artifacts/latest/\n\nhttps://claude.ai/code/session_01WcBnSyEEV2S1BMpJKXaTEv\n",
+            "author": {
+              "name": "DismaferWeb CI",
+              "email": "ci@dismafer.shop",
+              "time": 1779908013000
+            },
+            "committer": {
+              "name": "DismaferWeb CI",
+              "email": "ci@dismafer.shop",
+              "time": 1779908013000
+            },
+            "branch": "claude/dismafer-research-UFzmi"
+          }
+        },
+        "id": "Mobile Chrome (Pixel 5)",
+        "name": "Mobile Chrome (Pixel 5)",
+        "testDir": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/runner/work/DismaferWeb/DismaferWeb/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/DavidDevGt/DismaferWeb/commit/e2030540795f2506cc861f58f7d7289334530dc2",
+            "commitHash": "e2030540795f2506cc861f58f7d7289334530dc2",
+            "buildHref": "https://github.com/DavidDevGt/DismaferWeb/actions/runs/26531972771"
+          },
+          "gitCommit": {
+            "shortHash": "e203054",
+            "hash": "e2030540795f2506cc861f58f7d7289334530dc2",
+            "subject": "ci: artefactos guardados en rama ci/test-artifacts del repo",
+            "body": "ci: artefactos guardados en rama ci/test-artifacts del repo\n\n## Cambios principales\n\n### Job 'save-to-repo' (nuevo en ci.yml)\n- Corre después de unit-tests y e2e (siempre, aunque fallen)\n- Descarga todos los artifacts de GitHub Actions con actions/download-artifact\n- Los organiza en estructura: YYYY-MM-DD/run-{number}/unit/ + e2e/{device}/\n- Actualiza latest/ con el run más reciente\n- Hace git push a la rama ci/test-artifacts\n- Escribe meta.json por run: sha, branch, actor, resultados\n\n### Capturas Playwright en CI (playwright.config.ts ya tenía)\n- screenshot: 'on'  → captura de CADA step\n- video: 'on'       → video completo por test\n- trace: 'on'       → trace ZIP para playwright.dev/trace\n\n### Estructura en ci/test-artifacts\nci/test-artifacts/\n├── latest/unit/coverage/index.html       ← HTML cobertura\n├── latest/unit/junit-unit.xml\n├── latest/e2e/desktop-chrome/index.html  ← Playwright report\n├── latest/e2e/desktop-chrome/test-results/{test}/\n│   ├── screenshot.png\n│   ├── video.webm\n│   └── trace.zip\n├── latest/e2e/pixel-5/\n└── latest/e2e/iphone-12/\n\n### preview.yml actualizado\n- Comenta en PRs con links directos a ci/test-artifacts/latest/\n\nhttps://claude.ai/code/session_01WcBnSyEEV2S1BMpJKXaTEv\n",
+            "author": {
+              "name": "DismaferWeb CI",
+              "email": "ci@dismafer.shop",
+              "time": 1779908013000
+            },
+            "committer": {
+              "name": "DismaferWeb CI",
+              "email": "ci@dismafer.shop",
+              "time": 1779908013000
+            },
+            "branch": "claude/dismafer-research-UFzmi"
+          }
+        },
+        "id": "Mobile Safari (iPhone 12)",
+        "name": "Mobile Safari (iPhone 12)",
+        "testDir": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        {
+          "printSteps": true
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/junit-e2e.xml",
+          "suiteName": "E2E — DismaferWeb"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 2,
+    "webServer": {
+      "command": "pnpm build && pnpm preview",
+      "url": "http://localhost:4321",
+      "reuseExistingServer": false,
+      "timeout": 120000,
+      "stdout": "pipe",
+      "stderr": "pipe"
+    }
+  },
+  "suites": [],
+  "errors": [
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e/mobile.spec.ts",
+        "line": 4,
+        "column": 8
+      },
+      "snippet": "   at mobile.spec.ts:4\n\n\u001b[0m \u001b[90m 2 |\u001b[39m\n \u001b[90m 3 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Mobile — Responsive design'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 4 |\u001b[39m   test\u001b[33m.\u001b[39muse({ \u001b[33m...\u001b[39mdevices[\u001b[32m'Pixel 5'\u001b[39m] })\u001b[33m;\u001b[39m\n \u001b[90m   |\u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 5 |\u001b[39m\n \u001b[90m 6 |\u001b[39m   test(\u001b[32m'Homepage carga correctamente en móvil'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e/mobile.spec.ts",
+        "line": 4,
+        "column": 8
+      },
+      "snippet": "   at mobile.spec.ts:4\n\n\u001b[0m \u001b[90m 2 |\u001b[39m\n \u001b[90m 3 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Mobile — Responsive design'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 4 |\u001b[39m   test\u001b[33m.\u001b[39muse({ \u001b[33m...\u001b[39mdevices[\u001b[32m'Pixel 5'\u001b[39m] })\u001b[33m;\u001b[39m\n \u001b[90m   |\u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 5 |\u001b[39m\n \u001b[90m 6 |\u001b[39m   test(\u001b[32m'Homepage carga correctamente en móvil'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e/mobile.spec.ts",
+        "line": 4,
+        "column": 8
+      },
+      "snippet": "   at mobile.spec.ts:4\n\n\u001b[0m \u001b[90m 2 |\u001b[39m\n \u001b[90m 3 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Mobile — Responsive design'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 4 |\u001b[39m   test\u001b[33m.\u001b[39muse({ \u001b[33m...\u001b[39mdevices[\u001b[32m'Pixel 5'\u001b[39m] })\u001b[33m;\u001b[39m\n \u001b[90m   |\u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 5 |\u001b[39m\n \u001b[90m 6 |\u001b[39m   test(\u001b[32m'Homepage carga correctamente en móvil'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e/mobile.spec.ts",
+        "line": 4,
+        "column": 8
+      },
+      "snippet": "   at mobile.spec.ts:4\n\n\u001b[0m \u001b[90m 2 |\u001b[39m\n \u001b[90m 3 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Mobile — Responsive design'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 4 |\u001b[39m   test\u001b[33m.\u001b[39muse({ \u001b[33m...\u001b[39mdevices[\u001b[32m'Pixel 5'\u001b[39m] })\u001b[33m;\u001b[39m\n \u001b[90m   |\u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 5 |\u001b[39m\n \u001b[90m 6 |\u001b[39m   test(\u001b[32m'Homepage carga correctamente en móvil'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e/mobile.spec.ts",
+        "line": 4,
+        "column": 8
+      },
+      "snippet": "   at mobile.spec.ts:4\n\n\u001b[0m \u001b[90m 2 |\u001b[39m\n \u001b[90m 3 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Mobile — Responsive design'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 4 |\u001b[39m   test\u001b[33m.\u001b[39muse({ \u001b[33m...\u001b[39mdevices[\u001b[32m'Pixel 5'\u001b[39m] })\u001b[33m;\u001b[39m\n \u001b[90m   |\u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 5 |\u001b[39m\n \u001b[90m 6 |\u001b[39m   test(\u001b[32m'Homepage carga correctamente en móvil'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+    },
+    {
+      "message": "Cannot use({ defaultBrowserType }) in a describe group, because it forces a new worker.\nMake it top-level in the test file or put in the configuration file.",
+      "location": {
+        "file": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e/mobile.spec.ts",
+        "line": 4,
+        "column": 8
+      },
+      "snippet": "   at mobile.spec.ts:4\n\n\u001b[0m \u001b[90m 2 |\u001b[39m\n \u001b[90m 3 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Mobile — Responsive design'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 4 |\u001b[39m   test\u001b[33m.\u001b[39muse({ \u001b[33m...\u001b[39mdevices[\u001b[32m'Pixel 5'\u001b[39m] })\u001b[33m;\u001b[39m\n \u001b[90m   |\u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 5 |\u001b[39m\n \u001b[90m 6 |\u001b[39m   test(\u001b[32m'Homepage carga correctamente en móvil'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 7 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-05-27T18:54:40.494Z",
+    "duration": 6715.986000000001,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

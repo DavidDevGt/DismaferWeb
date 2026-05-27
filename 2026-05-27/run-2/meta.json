@@ -1,0 +1,11 @@
+{
+  "run": "2",
+  "date": "2026-05-27",
+  "sha": "e2030540795f2506cc861f58f7d7289334530dc2",
+  "shortSha": "e203054",
+  "branch": "claude/dismafer-research-UFzmi",
+  "actor": "DavidDevGt",
+  "workflow": "CI — DismaferWeb",
+  "unitTestsResult": "success",
+  "e2eResult": "failure"
+}
