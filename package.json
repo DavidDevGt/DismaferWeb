@@ -2,30 +2,48 @@
   "name": "dismafer-web",
   "type": "module",
   "version": "0.0.1",
+  "description": "Sitio web de Ferretería Dismafer — Zona 9, Guatemala",
+  "license": "MIT",
+  "author": {
+    "name": "DavidDevGt",
+    "url": "https://github.com/DavidDevGt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DavidDevGt/DismaferWeb.git"
+  },
+  "homepage": "https://dismafer.shop",
+  "bugs": {
+    "url": "https://github.com/DavidDevGt/DismaferWeb/issues"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{ts,astro,css}\" \"*.{js,mjs,ts,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,astro,css}\" \"*.{js,mjs,ts,json,md}\"",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:report": "playwright show-report",
     "test:e2e:debug": "playwright test --debug",
     "test:e2e:headed": "playwright test --headed",
-
     "test:ci": "CI=true vitest run --coverage",
     "test:e2e:ci": "CI=true playwright test",
-
     "test:all": "pnpm test && pnpm test:e2e",
     "test:all:ci": "pnpm test:ci && pnpm test:e2e:ci",
-
-    "ci": "pnpm check && pnpm test:ci && pnpm build && pnpm test:e2e:ci"
+    "ci": "pnpm lint && pnpm check && pnpm test:ci && pnpm build && pnpm test:e2e:ci"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -35,8 +53,17 @@
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.60.0",
+    "@typescript-eslint/eslint-plugin": "^8.60.0",
+    "@typescript-eslint/parser": "^8.60.0",
     "@vitest/coverage-v8": "^4.1.7",
+    "eslint": "^10.4.0",
+    "eslint-plugin-astro": "^1.7.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
   }

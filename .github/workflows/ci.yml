@@ -21,7 +21,37 @@ env:
 
 jobs:
   # ─────────────────────────────────────────────
-  # JOB 1: Type Check
+  # JOB 1: Lint (ESLint + Prettier check)
+  # ─────────────────────────────────────────────
+  lint:
+    name: 🔎 Lint (ESLint + Prettier)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: ESLint
+        run: pnpm lint
+
+      - name: Prettier check
+        run: pnpm format:check
+
+  # ─────────────────────────────────────────────
+  # JOB 2: Type Check
   # ─────────────────────────────────────────────
   typecheck:
     name: 🔍 Type Check
@@ -434,7 +464,7 @@ jobs:
   # ─────────────────────────────────────────────
   quality-gate:
     name: ✅ Quality Gate
-    needs: [typecheck, unit-tests, build, e2e, save-to-repo]
+    needs: [lint, typecheck, unit-tests, build, e2e, save-to-repo]
     runs-on: ubuntu-latest
     if: always()
     steps:
@@ -444,6 +474,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Job | Estado |" >> $GITHUB_STEP_SUMMARY
           echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| 🔎 Lint          | ${{ needs.lint.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🔍 Type Check   | ${{ needs.typecheck.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🧪 Unit Tests   | ${{ needs.unit-tests.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🏗️ Build        | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
@@ -452,7 +483,8 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "📦 **Artefactos guardados en:** [\`ci/test-artifacts\`](../../tree/ci/test-artifacts/latest)" >> $GITHUB_STEP_SUMMARY
 
-          if [[ "${{ needs.typecheck.result }}" != "success" || \
+          if [[ "${{ needs.lint.result }}" != "success" || \
+                "${{ needs.typecheck.result }}" != "success" || \
                 "${{ needs.unit-tests.result }}" != "success" || \
                 "${{ needs.build.result }}" != "success" || \
                 "${{ needs.e2e.result }}" != "success" ]]; then

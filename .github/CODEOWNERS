@@ -1,0 +1,23 @@
+# CODEOWNERS — DismaferWeb
+# Cada línea define quién es responsable de revisar cambios en esa ruta.
+# Sintaxis: <patrón>  <@usuario o @org/equipo>
+#
+# Documentación: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Dueño global (fallback)
+*                           @daviddevgt
+
+# CI/CD — revisión obligatoria para cambios en workflows
+.github/workflows/          @daviddevgt
+
+# Configuración crítica
+astro.config.mjs            @daviddevgt
+package.json                @daviddevgt
+tsconfig.json               @daviddevgt
+eslint.config.js            @daviddevgt
+
+# Datos del negocio — requiere aprobación del responsable
+src/data/                   @daviddevgt
+
+# Contenido de páginas
+src/pages/                  @daviddevgt
