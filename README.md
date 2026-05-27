@@ -8,6 +8,11 @@ Rediseño y desarrollo del sitio web de Dismafer, ferretería con más de 20 añ
 
 ## Documentación
 
+### Estrategia
+| Documento | Descripción |
+|---|---|
+| [**Análisis Estratégico Completo**](docs/strategy/analysis.md) | Mercado Guatemala, WhatsApp, SEO local, marketing digital, veredicto de stack y plan en 3 fases |
+
 ### Negocio
 | Documento | Descripción |
 |---|---|
