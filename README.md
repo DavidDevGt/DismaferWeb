@@ -52,7 +52,7 @@ Astro 5 + Tailwind CSS v4 + TypeScript + pnpm
 | Campo      | Dato                                       |
 | ---------- | ------------------------------------------ |
 | Negocio    | Ferretería Dismafer                        |
-| Dirección  | 2ª Calle 2-77, Zona 9, Ciudad de Guatemala |
+| Dirección  | 2ª Calle 2-73, Zona 9, Ciudad de Guatemala |
 | Teléfono   | (502) 2339-0468                            |
 | WhatsApp   | +502 5833-0848                             |
 | Email      | info@dismafer.shop                      |
