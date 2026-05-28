@@ -19,7 +19,7 @@
 | Teléfono principal | (502) 2339-0468 |
 | Teléfono alternativo | (502) 2339-4592 |
 | WhatsApp | +502 5833-0848 |
-| Email | jvargas@dismafer.shop |
+| Email | info@dismafer.shop |
 | Sitio web | https://dismafer.shop |
 | Facebook | https://www.facebook.com/dismaferz9/ |
 | RRSS handle | @dismaferz9 |
@@ -134,4 +134,4 @@
 | 4 | WhatsApp (+502 5833-0848) es canal de ventas prioritario — debe estar visible |
 | 5 | El catálogo actual en WooCommerce existe pero puede necesitar mejoras de UX |
 | 6 | La alianza con Truper es un diferenciador a comunicar en el sitio |
-| 7 | Email corporativo activo: jvargas@dismafer.shop |
+| 7 | Email corporativo activo: info@dismafer.shop |

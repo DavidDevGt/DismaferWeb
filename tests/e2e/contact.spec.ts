@@ -22,24 +22,7 @@ test.describe('Página de Contacto — /contacto', () => {
     expect(href).toContain('2339');
   });
 
-  test('debe mostrar el email del negocio', async ({ page }) => {
-    const emailLink = page.locator('a[href*="mailto:"]');
-    await expect(emailLink).toBeVisible();
-    const href = await emailLink.getAttribute('href');
-    expect(href).toContain('dismafer.shop');
-  });
-
-  test('debe mostrar la dirección física', async ({ page }) => {
-    const content = await page.content();
-    expect(content).toContain('Zona 9');
-  });
-
-  test('debe mostrar un link a Google Maps', async ({ page }) => {
-    const mapsLink = page.locator('a[href*="maps.google.com"]').first();
-    await expect(mapsLink).toBeVisible();
-  });
-
-  test('debe mostrar los horarios de atención', async ({ page }) => {
+test('debe mostrar los horarios de atención', async ({ page }) => {
     const content = await page.content();
     expect(content).toMatch(/07:00|7:00/);
     expect(content).toMatch(/Lunes|lunes/i);

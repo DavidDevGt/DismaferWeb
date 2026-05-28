@@ -55,7 +55,7 @@ Astro 5 + Tailwind CSS v4 + TypeScript + pnpm
 | Dirección  | 2ª Calle 2-77, Zona 9, Ciudad de Guatemala |
 | Teléfono   | (502) 2339-0468                            |
 | WhatsApp   | +502 5833-0848                             |
-| Email      | jvargas@dismafer.shop                      |
+| Email      | info@dismafer.shop                      |
 | Web actual | https://dismafer.shop                      |
 | RRSS       | @dismaferz9                                |
 

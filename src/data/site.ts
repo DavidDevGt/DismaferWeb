@@ -12,7 +12,6 @@ export const siteConfig: SiteConfig = {
     whatsapp: '+50258330848',
     whatsappUrl:
       'https://wa.me/50258330848?text=Hola%2C%20me%20interesa%20informaci%C3%B3n%20sobre%20sus%20productos',
-    email: 'jvargas@dismafer.shop',
     address: '2ª Calle 2-77, Zona 9, Ciudad de Guatemala, Guatemala',
     addressShort: '2ª Calle 2-77, Zona 9',
     mapUrl: 'https://maps.google.com/?q=Ferreteria+Dismafer+2a+Calle+2-77+Zona+9+Guatemala',

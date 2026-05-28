@@ -44,7 +44,6 @@ export interface SiteConfig {
     phoneDisplay: string;
     whatsapp: string;
     whatsappUrl: string;
-    email: string;
     address: string;
     addressShort: string;
     mapUrl: string;
