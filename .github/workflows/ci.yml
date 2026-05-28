@@ -289,8 +289,13 @@ jobs:
       - name: Checkout rama ci/test-artifacts
         run: |
           git fetch origin ci/test-artifacts 2>/dev/null || true
-          git worktree add /tmp/artifacts-branch ci/test-artifacts 2>/dev/null || \
-          git worktree add --orphan -b ci/test-artifacts /tmp/artifacts-branch
+          if git rev-parse --verify origin/ci/test-artifacts >/dev/null 2>&1; then
+            git branch ci/test-artifacts origin/ci/test-artifacts 2>/dev/null || \
+              git branch -f ci/test-artifacts origin/ci/test-artifacts
+            git worktree add /tmp/artifacts-branch ci/test-artifacts
+          else
+            git worktree add --orphan -b ci/test-artifacts /tmp/artifacts-branch
+          fi
 
       - name: Preparar estructura de directorios
         run: |
