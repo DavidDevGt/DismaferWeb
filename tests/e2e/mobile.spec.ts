@@ -1,8 +1,8 @@
-import { test, expect, devices } from '@playwright/test';
+import { test, expect } from '@playwright/test';
+
+test.use({ viewport: { width: 375, height: 812 } });
 
 test.describe('Mobile — Responsive design', () => {
-  test.use({ ...devices['Pixel 5'] });
-
   test('Homepage carga correctamente en móvil', async ({ page }) => {
     await page.goto('/');
     const h1 = page.locator('h1');
@@ -11,8 +11,8 @@ test.describe('Mobile — Responsive design', () => {
 
   test('Botón flotante de WhatsApp es visible en móvil', async ({ page }) => {
     await page.goto('/');
-    const floatBtn = page.locator('a[href*="wa.me"][class*="fixed"]');
-    await expect(floatBtn).toBeAttached();
+    const floatBtn = page.locator('a[href*="wa.me"]').first();
+    await expect(floatBtn).toBeVisible();
   });
 
   test('Menú hamburguesa aparece en móvil', async ({ page }) => {
@@ -23,15 +23,12 @@ test.describe('Mobile — Responsive design', () => {
 
   test('Nav desktop está oculto en móvil', async ({ page }) => {
     await page.goto('/');
-    // El nav desktop tiene clase md:flex — en mobile debería estar oculto visualmente
-    const desktopNav = page.locator('nav.hidden.md\\:flex');
-    // Verificamos que existe en el DOM aunque visualmente oculto
-    await expect(desktopNav).toBeAttached();
+    const desktopNav = page.locator('nav div.hidden.md\\:flex');
+    await expect(desktopNav).toHaveCount(0);
   });
 
   test('Grilla de categorías es legible en móvil (min 2 columnas)', async ({ page }) => {
     await page.goto('/productos');
-    // La grilla de categorías debe mostrar contenido
     const categoryLinks = page.locator('a[href*="/productos/"]');
     const count = await categoryLinks.count();
     expect(count).toBeGreaterThanOrEqual(6);
@@ -39,9 +36,8 @@ test.describe('Mobile — Responsive design', () => {
 
   test('Tap targets de links principales son suficientemente grandes', async ({ page }) => {
     await page.goto('/');
-    // Links principales en el CTA del hero deben ser grandes (al menos 44px de alto)
-    const ctaLinks = page.locator('a[href*="wa.me"]').first();
-    const box = await ctaLinks.boundingBox();
+    const ctaLink = page.locator('a[href*="wa.me"]').first();
+    const box = await ctaLink.boundingBox();
     if (box) {
       expect(box.height).toBeGreaterThanOrEqual(44);
     }

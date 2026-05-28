@@ -10,19 +10,19 @@ test.describe('Página de Contacto — /contacto', () => {
     expect(response.status()).toBe(200);
   });
 
-  test('debe mostrar el número de WhatsApp clickeable', async ({ page }) => {
-    const waLink = page.locator('a[href*="wa.me/50258330848"]').first();
-    await expect(waLink).toBeVisible();
+test('debe mostrar el número de WhatsApp clickeable', async ({ page }) => {
+    const waLink = page.locator('a[href*="wa.me/50258330848"]');
+    await expect(waLink.first()).toBeVisible();
   });
 
   test('debe mostrar el número de teléfono como link clickeable', async ({ page }) => {
-    const telLink = page.locator('a[href*="tel:"]');
-    await expect(telLink).toBeVisible();
-    const href = await telLink.getAttribute('href');
+    const telLink = page.locator('a[href*="tel:+502"]');
+    await expect(telLink.first()).toBeVisible();
+    const href = await telLink.first().getAttribute('href');
     expect(href).toContain('2339');
   });
 
-test('debe mostrar los horarios de atención', async ({ page }) => {
+  test('debe mostrar los horarios de atención', async ({ page }) => {
     const content = await page.content();
     expect(content).toMatch(/07:00|7:00/);
     expect(content).toMatch(/Lunes|lunes/i);
