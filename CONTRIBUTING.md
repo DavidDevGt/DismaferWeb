@@ -18,20 +18,20 @@ pnpm dev        # http://localhost:4321
 
 ## Scripts disponibles
 
-| Script | Descripción |
-|--------|-------------|
-| `pnpm dev` | Servidor de desarrollo con HMR |
-| `pnpm build` | Build de producción |
-| `pnpm preview` | Preview del build de producción |
-| `pnpm check` | Type-check con Astro |
-| `pnpm lint` | ESLint en todo el proyecto |
-| `pnpm lint:fix` | ESLint con autofix |
-| `pnpm format` | Prettier en todo el proyecto |
-| `pnpm test` | Tests unitarios (Vitest) |
-| `pnpm test:watch` | Tests en modo watch |
-| `pnpm test:coverage` | Tests con reporte de cobertura |
-| `pnpm test:e2e` | Tests E2E (requiere `playwright install chromium`) |
-| `pnpm ci` | Pipeline completo local |
+| Script               | Descripción                                        |
+| -------------------- | -------------------------------------------------- |
+| `pnpm dev`           | Servidor de desarrollo con HMR                     |
+| `pnpm build`         | Build de producción                                |
+| `pnpm preview`       | Preview del build de producción                    |
+| `pnpm check`         | Type-check con Astro                               |
+| `pnpm lint`          | ESLint en todo el proyecto                         |
+| `pnpm lint:fix`      | ESLint con autofix                                 |
+| `pnpm format`        | Prettier en todo el proyecto                       |
+| `pnpm test`          | Tests unitarios (Vitest)                           |
+| `pnpm test:watch`    | Tests en modo watch                                |
+| `pnpm test:coverage` | Tests con reporte de cobertura                     |
+| `pnpm test:e2e`      | Tests E2E (requiere `playwright install chromium`) |
+| `pnpm ci`            | Pipeline completo local                            |
 
 ## Convenciones de commits
 
@@ -45,18 +45,19 @@ Seguimos [Conventional Commits](https://www.conventionalcommits.org/):
 
 **Tipos:**
 
-| Tipo | Cuándo usarlo |
-|------|---------------|
-| `feat` | Nueva funcionalidad |
-| `fix` | Corrección de bug |
-| `docs` | Solo documentación |
-| `style` | Formato, sin cambio de lógica |
-| `refactor` | Refactor sin feat ni fix |
-| `test` | Agregar o corregir tests |
-| `chore` | Build, deps, CI, config |
-| `perf` | Mejora de performance |
+| Tipo       | Cuándo usarlo                 |
+| ---------- | ----------------------------- |
+| `feat`     | Nueva funcionalidad           |
+| `fix`      | Corrección de bug             |
+| `docs`     | Solo documentación            |
+| `style`    | Formato, sin cambio de lógica |
+| `refactor` | Refactor sin feat ni fix      |
+| `test`     | Agregar o corregir tests      |
+| `chore`    | Build, deps, CI, config       |
+| `perf`     | Mejora de performance         |
 
 **Ejemplos:**
+
 ```
 feat(productos): agregar filtro por marca en el catálogo
 fix(header): corregir z-index del menú mobile
@@ -67,6 +68,7 @@ test(unit): agregar casos edge para getCategoryBySlug
 ## Flujo de trabajo
 
 1. Crear rama desde `main`:
+
    ```bash
    git checkout -b feature/nombre-descriptivo
    # o
@@ -74,6 +76,7 @@ test(unit): agregar casos edge para getCategoryBySlug
    ```
 
 2. Hacer los cambios y verificar que todo pasa:
+
    ```bash
    pnpm lint && pnpm check && pnpm test && pnpm build
    ```

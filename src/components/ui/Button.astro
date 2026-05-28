@@ -16,13 +16,14 @@ const {
   type = 'button',
 } = Astro.props;
 
-const base = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 cursor-pointer no-underline';
+const base =
+  'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 cursor-pointer no-underline';
 
 const variants = {
-  primary:   'bg-accent text-white hover:bg-orange-600 shadow-md hover:shadow-lg',
+  primary: 'bg-accent text-white hover:bg-orange-600 shadow-md hover:shadow-lg',
   secondary: 'bg-primary text-white hover:bg-blue-900 shadow-md hover:shadow-lg',
-  ghost:     'border-2 border-primary text-primary hover:bg-primary hover:text-white',
-  whatsapp:  'bg-green-500 text-white hover:bg-green-600 shadow-md hover:shadow-lg',
+  ghost: 'border-2 border-primary text-primary hover:bg-primary hover:text-white',
+  whatsapp: 'bg-green-500 text-white hover:bg-green-600 shadow-md hover:shadow-lg',
 };
 
 const sizes = {
@@ -35,11 +36,6 @@ const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
 const Tag = href ? 'a' : 'button';
 ---
 
-<Tag
-  class={classes}
-  href={href}
-  target={target}
-  type={!href ? type : undefined}
->
+<Tag class={classes} href={href} target={target} type={!href ? type : undefined}>
   <slot />
 </Tag>

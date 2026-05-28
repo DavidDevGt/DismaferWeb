@@ -8,7 +8,7 @@ describe('Categories data', () => {
     });
 
     it('debe incluir las 6 categorías requeridas por el negocio', () => {
-      const slugs = categories.map(c => c.slug);
+      const slugs = categories.map((c) => c.slug);
       expect(slugs).toContain('herramienta-manual');
       expect(slugs).toContain('herramienta-electrica');
       expect(slugs).toContain('tuberia-pvc');
@@ -18,13 +18,13 @@ describe('Categories data', () => {
     });
 
     it('todos los slugs deben ser únicos', () => {
-      const slugs = categories.map(c => c.slug);
+      const slugs = categories.map((c) => c.slug);
       const uniqueSlugs = new Set(slugs);
       expect(uniqueSlugs.size).toBe(slugs.length);
     });
 
     it('todos los ids deben ser únicos', () => {
-      const ids = categories.map(c => c.id);
+      const ids = categories.map((c) => c.id);
       const uniqueIds = new Set(ids);
       expect(uniqueIds.size).toBe(ids.length);
     });
@@ -32,7 +32,7 @@ describe('Categories data', () => {
 
   describe('integridad de campos', () => {
     it('cada categoría debe tener todos los campos requeridos', () => {
-      categories.forEach(cat => {
+      categories.forEach((cat) => {
         expect(cat.id, `${cat.slug} debe tener id`).toBeTruthy();
         expect(cat.name, `${cat.slug} debe tener name`).toBeTruthy();
         expect(cat.slug, `${cat.slug} debe tener slug`).toBeTruthy();
@@ -43,19 +43,19 @@ describe('Categories data', () => {
     });
 
     it('los slugs no deben contener espacios ni mayúsculas', () => {
-      categories.forEach(cat => {
+      categories.forEach((cat) => {
         expect(cat.slug).toMatch(/^[a-z0-9-]+$/);
       });
     });
 
     it('las descriptions deben tener al menos 10 caracteres', () => {
-      categories.forEach(cat => {
+      categories.forEach((cat) => {
         expect(cat.description.length).toBeGreaterThanOrEqual(10);
       });
     });
 
     it('los colors deben ser clases Tailwind válidas', () => {
-      categories.forEach(cat => {
+      categories.forEach((cat) => {
         expect(cat.color).toMatch(/^bg-/);
       });
     });
@@ -86,7 +86,7 @@ describe('Categories data', () => {
         'pinturas',
         'materiales-construccion',
       ];
-      validSlugs.forEach(slug => {
+      validSlugs.forEach((slug) => {
         const cat = getCategoryBySlug(slug);
         expect(cat, `debe encontrar categoría para slug: ${slug}`).toBeDefined();
         expect(cat?.slug).toBe(slug);

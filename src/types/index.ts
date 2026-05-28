@@ -5,8 +5,8 @@ export interface Category {
   name: string;
   slug: string;
   description: string;
-  icon: string;         // SVG path data
-  color: string;        // Tailwind bg class
+  icon: string; // SVG path data
+  color: string; // Tailwind bg class
   productCount?: number;
 }
 

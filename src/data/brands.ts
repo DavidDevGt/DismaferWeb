@@ -5,7 +5,8 @@ export const brands: Brand[] = [
     id: 'truper',
     name: 'Truper',
     slug: 'truper',
-    description: 'Líder latinoamericano en herramientas manuales y eléctricas con más de 50 años de experiencia.',
+    description:
+      'Líder latinoamericano en herramientas manuales y eléctricas con más de 50 años de experiencia.',
     featured: true,
     country: 'México',
   },
@@ -43,4 +44,4 @@ export const brands: Brand[] = [
   },
 ];
 
-export const featuredBrands = brands.filter(b => b.featured);
+export const featuredBrands = brands.filter((b) => b.featured);

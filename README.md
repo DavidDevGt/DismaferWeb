@@ -9,26 +9,30 @@ Rediseño y desarrollo del sitio web de Dismafer, ferretería con más de 20 añ
 ## Documentación
 
 ### Estrategia
-| Documento | Descripción |
-|---|---|
+
+| Documento                                                      | Descripción                                                                                     |
+| -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | [**Análisis Estratégico Completo**](docs/strategy/analysis.md) | Mercado Guatemala, WhatsApp, SEO local, marketing digital, veredicto de stack y plan en 3 fases |
 
 ### Negocio
-| Documento | Descripción |
-|---|---|
+
+| Documento                                             | Descripción                                                         |
+| ----------------------------------------------------- | ------------------------------------------------------------------- |
 | [Investigación de Negocio](docs/business/research.md) | Información del negocio, contacto, productos, mercado y competencia |
 
 ### Marca
-| Documento | Descripción |
-|---|---|
+
+| Documento                                 | Descripción                                                         |
+| ----------------------------------------- | ------------------------------------------------------------------- |
 | [Guía de Marca](docs/brand/guidelines.md) | Paleta de colores, tipografías, logotipo, versiones y variables CSS |
 
 ### Arquitectura y Diseño
-| Documento | Descripción |
-|---|---|
+
+| Documento                                                    | Descripción                                                                      |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------------- |
 | [Decisiones de Arquitectura](docs/architecture/decisions.md) | Stack, estructura de carpetas, islands, SEO, integraciones y performance targets |
-| [Setup Astro 5 + pnpm](docs/architecture/astro-setup.md) | Guía completa de instalación, configuración y conceptos clave de Astro 5 |
-| [Investigación UX](docs/design/ux-research.md) | Referentes mundiales, patrones UX, mobile-first y componentes priorizados |
+| [Setup Astro 5 + pnpm](docs/architecture/astro-setup.md)     | Guía completa de instalación, configuración y conceptos clave de Astro 5         |
+| [Investigación UX](docs/design/ux-research.md)               | Referentes mundiales, patrones UX, mobile-first y componentes priorizados        |
 
 ## Stack Tecnológico
 
@@ -36,24 +40,24 @@ Rediseño y desarrollo del sitio web de Dismafer, ferretería con más de 20 añ
 Astro 5 + Tailwind CSS v4 + TypeScript + pnpm
 ```
 
-| Decisión | Elección | Razón |
-|---|---|---|
-| Framework | Astro 5 | 0 JS por defecto, 100/100 Core Web Vitals, ideal para catálogo |
-| Estilos | Tailwind CSS v4 | Tokens de diseño nativos, mobile-first, rápido |
-| Tipado | TypeScript | Seguridad en content collections y componentes |
-| Package manager | pnpm | 3x más rápido que npm, eficiente en disco |
+| Decisión        | Elección        | Razón                                                          |
+| --------------- | --------------- | -------------------------------------------------------------- |
+| Framework       | Astro 5         | 0 JS por defecto, 100/100 Core Web Vitals, ideal para catálogo |
+| Estilos         | Tailwind CSS v4 | Tokens de diseño nativos, mobile-first, rápido                 |
+| Tipado          | TypeScript      | Seguridad en content collections y componentes                 |
+| Package manager | pnpm            | 3x más rápido que npm, eficiente en disco                      |
 
 ## Contacto del Cliente
 
-| Campo | Dato |
-|---|---|
-| Negocio | Ferretería Dismafer |
-| Dirección | 2ª Calle 2-77, Zona 9, Ciudad de Guatemala |
-| Teléfono | (502) 2339-0468 |
-| WhatsApp | +502 5833-0848 |
-| Email | jvargas@dismafer.shop |
-| Web actual | https://dismafer.shop |
-| RRSS | @dismaferz9 |
+| Campo      | Dato                                       |
+| ---------- | ------------------------------------------ |
+| Negocio    | Ferretería Dismafer                        |
+| Dirección  | 2ª Calle 2-77, Zona 9, Ciudad de Guatemala |
+| Teléfono   | (502) 2339-0468                            |
+| WhatsApp   | +502 5833-0848                             |
+| Email      | jvargas@dismafer.shop                      |
+| Web actual | https://dismafer.shop                      |
+| RRSS       | @dismaferz9                                |
 
 ## Links rápidos
 

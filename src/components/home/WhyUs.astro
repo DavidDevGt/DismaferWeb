@@ -28,26 +28,36 @@ const reasons = [
 <section class="py-16 bg-primary text-white">
   <Container>
     <div class="text-center mb-12">
-      <span class="text-accent font-semibold text-sm uppercase tracking-wider">¿Por qué Dismafer?</span>
+      <span class="text-accent font-semibold text-sm uppercase tracking-wider"
+        >¿Por qué Dismafer?</span
+      >
       <h2 class="text-3xl sm:text-4xl font-heading font-bold mt-2">
         Tu ferretería de confianza en Zona 9
       </h2>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      {reasons.map((reason) => (
-        <div class="text-center flex flex-col items-center gap-4">
-          <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0">
-            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d={reason.icon} />
-            </svg>
+      {
+        reasons.map((reason) => (
+          <div class="text-center flex flex-col items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0">
+              <svg
+                class="w-7 h-7 text-accent"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d={reason.icon} />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-xl mb-2">{reason.title}</h3>
+              <p class="text-white/70 text-sm leading-relaxed">{reason.desc}</p>
+            </div>
           </div>
-          <div>
-            <h3 class="font-heading font-bold text-xl mb-2">{reason.title}</h3>
-            <p class="text-white/70 text-sm leading-relaxed">{reason.desc}</p>
-          </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </Container>
 </section>
