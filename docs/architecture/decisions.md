@@ -208,7 +208,7 @@ Dismafer compite en búsquedas locales de Guatemala:
   "name": "Ferretería Dismafer",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "2ª Calle 2-77",
+    "streetAddress": "2ª Calle 2-73",
     "addressLocality": "Zona 9, Ciudad de Guatemala",
     "addressCountry": "GT"
   },
