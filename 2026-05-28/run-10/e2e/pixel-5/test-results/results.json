@@ -1,0 +1,220 @@
+{
+  "config": {
+    "configFile": "/home/runner/work/DismaferWeb/DismaferWeb/playwright.config.ts",
+    "rootDir": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e",
+    "forbidOnly": true,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/DavidDevGt/DismaferWeb/commit/7724d8d530f165442df8d90a4fa9137ba0b66d2d",
+        "commitHash": "7724d8d530f165442df8d90a4fa9137ba0b66d2d",
+        "buildHref": "https://github.com/DavidDevGt/DismaferWeb/actions/runs/26598413868"
+      },
+      "gitCommit": {
+        "shortHash": "7724d8d",
+        "hash": "7724d8d530f165442df8d90a4fa9137ba0b66d2d",
+        "subject": "fix: mejorar visibilidad y accesibilidad de enlaces en pruebas de contacto y móvil",
+        "body": "fix: mejorar visibilidad y accesibilidad de enlaces en pruebas de contacto y móvil\n",
+        "author": {
+          "name": "DavidDevGt",
+          "email": "josuedavidvl18@gmail.com",
+          "time": 1779997842000
+        },
+        "committer": {
+          "name": "DavidDevGt",
+          "email": "josuedavidvl18@gmail.com",
+          "time": 1779997842000
+        },
+        "branch": "main"
+      }
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/DismaferWeb/DismaferWeb/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/DavidDevGt/DismaferWeb/commit/7724d8d530f165442df8d90a4fa9137ba0b66d2d",
+            "commitHash": "7724d8d530f165442df8d90a4fa9137ba0b66d2d",
+            "buildHref": "https://github.com/DavidDevGt/DismaferWeb/actions/runs/26598413868"
+          },
+          "gitCommit": {
+            "shortHash": "7724d8d",
+            "hash": "7724d8d530f165442df8d90a4fa9137ba0b66d2d",
+            "subject": "fix: mejorar visibilidad y accesibilidad de enlaces en pruebas de contacto y móvil",
+            "body": "fix: mejorar visibilidad y accesibilidad de enlaces en pruebas de contacto y móvil\n",
+            "author": {
+              "name": "DavidDevGt",
+              "email": "josuedavidvl18@gmail.com",
+              "time": 1779997842000
+            },
+            "committer": {
+              "name": "DavidDevGt",
+              "email": "josuedavidvl18@gmail.com",
+              "time": 1779997842000
+            },
+            "branch": "main"
+          }
+        },
+        "id": "Desktop Chrome",
+        "name": "Desktop Chrome",
+        "testDir": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/runner/work/DismaferWeb/DismaferWeb/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/DavidDevGt/DismaferWeb/commit/7724d8d530f165442df8d90a4fa9137ba0b66d2d",
+            "commitHash": "7724d8d530f165442df8d90a4fa9137ba0b66d2d",
+            "buildHref": "https://github.com/DavidDevGt/DismaferWeb/actions/runs/26598413868"
+          },
+          "gitCommit": {
+            "shortHash": "7724d8d",
+            "hash": "7724d8d530f165442df8d90a4fa9137ba0b66d2d",
+            "subject": "fix: mejorar visibilidad y accesibilidad de enlaces en pruebas de contacto y móvil",
+            "body": "fix: mejorar visibilidad y accesibilidad de enlaces en pruebas de contacto y móvil\n",
+            "author": {
+              "name": "DavidDevGt",
+              "email": "josuedavidvl18@gmail.com",
+              "time": 1779997842000
+            },
+            "committer": {
+              "name": "DavidDevGt",
+              "email": "josuedavidvl18@gmail.com",
+              "time": 1779997842000
+            },
+            "branch": "main"
+          }
+        },
+        "id": "Mobile Chrome (Pixel 5)",
+        "name": "Mobile Chrome (Pixel 5)",
+        "testDir": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/runner/work/DismaferWeb/DismaferWeb/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/DavidDevGt/DismaferWeb/commit/7724d8d530f165442df8d90a4fa9137ba0b66d2d",
+            "commitHash": "7724d8d530f165442df8d90a4fa9137ba0b66d2d",
+            "buildHref": "https://github.com/DavidDevGt/DismaferWeb/actions/runs/26598413868"
+          },
+          "gitCommit": {
+            "shortHash": "7724d8d",
+            "hash": "7724d8d530f165442df8d90a4fa9137ba0b66d2d",
+            "subject": "fix: mejorar visibilidad y accesibilidad de enlaces en pruebas de contacto y móvil",
+            "body": "fix: mejorar visibilidad y accesibilidad de enlaces en pruebas de contacto y móvil\n",
+            "author": {
+              "name": "DavidDevGt",
+              "email": "josuedavidvl18@gmail.com",
+              "time": 1779997842000
+            },
+            "committer": {
+              "name": "DavidDevGt",
+              "email": "josuedavidvl18@gmail.com",
+              "time": 1779997842000
+            },
+            "branch": "main"
+          }
+        },
+        "id": "Mobile Safari (iPhone 12)",
+        "name": "Mobile Safari (iPhone 12)",
+        "testDir": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        {
+          "printSteps": true
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/junit-e2e.xml",
+          "suiteName": "E2E — DismaferWeb"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 2,
+    "webServer": {
+      "command": "pnpm preview",
+      "url": "http://localhost:4321",
+      "reuseExistingServer": false,
+      "timeout": 120000,
+      "stdout": "pipe",
+      "stderr": "pipe"
+    }
+  },
+  "suites": [],
+  "errors": [
+    {
+      "message": "SyntaxError: /home/runner/work/DismaferWeb/DismaferWeb/tests/e2e/homepage.spec.ts: Unterminated template. (51:219)\n\n\u001b[0m \u001b[90m 49 |\u001b[39m     ]\u001b[33m;\u001b[39m\n \u001b[90m 50 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m href \u001b[36mof\u001b[39m categoryLinks) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 51 |\u001b[39m       \u001b[36mconst\u001b[39m link \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m`a:has-text(\"${href.split('/')[2] === 'tuberia-pvc' ? 'Tubería' : href.split('/')[2] === 'pinturas' ? 'Pinturas' : href.split('/')[2] === 'materiales-construccion' ? 'Materiales' : ''}`\u001b[39m)\u001b[32m`);\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                                                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 52 |\u001b[39m \u001b[32m      await expect(link).toBeVisible();\u001b[39m\n \u001b[90m 53 |\u001b[39m \u001b[32m    }\u001b[39m\n \u001b[90m 54 |\u001b[39m \u001b[32m  });\u001b[39m\u001b[0m",
+      "stack": "SyntaxError: /home/runner/work/DismaferWeb/DismaferWeb/tests/e2e/homepage.spec.ts: Unterminated template. (51:219)\n\n\u001b[0m \u001b[90m 49 |\u001b[39m     ]\u001b[33m;\u001b[39m\n \u001b[90m 50 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m href \u001b[36mof\u001b[39m categoryLinks) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 51 |\u001b[39m       \u001b[36mconst\u001b[39m link \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m`a:has-text(\"${href.split('/')[2] === 'tuberia-pvc' ? 'Tubería' : href.split('/')[2] === 'pinturas' ? 'Pinturas' : href.split('/')[2] === 'materiales-construccion' ? 'Materiales' : ''}`\u001b[39m)\u001b[32m`);\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                                                                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 52 |\u001b[39m \u001b[32m      await expect(link).toBeVisible();\u001b[39m\n \u001b[90m 53 |\u001b[39m \u001b[32m    }\u001b[39m\n \u001b[90m 54 |\u001b[39m \u001b[32m  });\u001b[39m\u001b[0m",
+      "location": {
+        "file": "/home/runner/work/DismaferWeb/DismaferWeb/tests/e2e/homepage.spec.ts",
+        "line": 51,
+        "column": 219
+      },
+      "snippet": "   at homepage.spec.ts:51\n\n\u001b[0m \u001b[90m 49 |\u001b[39m     ]\u001b[33m;\u001b[39m\n \u001b[90m 50 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m href \u001b[36mof\u001b[39m categoryLinks) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 51 |\u001b[39m       \u001b[36mconst\u001b[39m link \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m`a:has-text(\"${href.split('/')[2] === 'tuberia-pvc' ? 'Tubería' : href.split('/')[2] === 'pinturas' ? 'Pinturas' : href.split('/')[2] === 'materiales-construccion' ? 'Materiales' : ''}`\u001b[39m)\u001b[32m`);\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                                                                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 52 |\u001b[39m \u001b[32m      await expect(link).toBeVisible();\u001b[39m\n \u001b[90m 53 |\u001b[39m \u001b[32m    }\u001b[39m\n \u001b[90m 54 |\u001b[39m \u001b[32m  });\u001b[39m\u001b[0m"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-05-28T19:52:04.522Z",
+    "duration": 2421.1259999999997,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
