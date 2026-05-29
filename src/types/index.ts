@@ -5,8 +5,8 @@ export interface Category {
   name: string;
   slug: string;
   description: string;
-  icon: string;         // SVG path data
-  color: string;        // Tailwind bg class
+  icon: string; // SVG path data
+  color: string; // Tailwind bg class
   productCount?: number;
 }
 
@@ -44,7 +44,6 @@ export interface SiteConfig {
     phoneDisplay: string;
     whatsapp: string;
     whatsappUrl: string;
-    email: string;
     address: string;
     addressShort: string;
     mapUrl: string;

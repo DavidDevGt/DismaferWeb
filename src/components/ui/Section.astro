@@ -6,12 +6,13 @@ interface Props {
 }
 const { bg = 'white', class: className = '', id } = Astro.props;
 const bgs = {
-  white:   'bg-white',
+  white: 'bg-white',
   primary: 'bg-primary text-white',
-  light:   'bg-slate-50',
-  dark:    'bg-gray-900 text-white',
+  light: 'bg-slate-50',
+  dark: 'bg-gray-900 text-white',
 };
 ---
+
 <section id={id} class={`${bgs[bg]} ${className}`}>
   <slot />
 </section>

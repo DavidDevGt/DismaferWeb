@@ -53,15 +53,15 @@ describe('Data index barrel export', () => {
   });
 
   it('consistencia: featuredBrands es subconjunto de brands', () => {
-    const allBrandIds = new Set(brands.map(b => b.id));
-    featuredBrands.forEach(fb => {
+    const allBrandIds = new Set(brands.map((b) => b.id));
+    featuredBrands.forEach((fb) => {
       expect(allBrandIds.has(fb.id)).toBe(true);
     });
   });
 
   it('consistencia: featuredProducts es subconjunto de products', () => {
-    const allProductIds = new Set(products.map(p => p.id));
-    featuredProducts.forEach(fp => {
+    const allProductIds = new Set(products.map((p) => p.id));
+    featuredProducts.forEach((fp) => {
       expect(allProductIds.has(fp.id)).toBe(true);
     });
   });

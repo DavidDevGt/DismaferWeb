@@ -8,7 +8,7 @@
 | Slogan | "De TODO en Ferretería" / "Si no lo tenemos, te lo conseguimos" |
 | Tipo | Ferretería — venta al detalle y mayor |
 | Fundación | ~1987 (más de 20 años en el sector) |
-| Ubicación | 2ª Calle 2-77, Zona 9, Ciudad de Guatemala |
+| Ubicación | 2ª Calle 2-73, Zona 9, Ciudad de Guatemala |
 
 ---
 
@@ -19,7 +19,7 @@
 | Teléfono principal | (502) 2339-0468 |
 | Teléfono alternativo | (502) 2339-4592 |
 | WhatsApp | +502 5833-0848 |
-| Email | jvargas@dismafer.shop |
+| Email | info@dismafer.shop |
 | Sitio web | https://dismafer.shop |
 | Facebook | https://www.facebook.com/dismaferz9/ |
 | RRSS handle | @dismaferz9 |
@@ -30,8 +30,8 @@
 
 | Día | Horario |
 |---|---|
-| Lunes – Viernes | 07:00 – 17:30 |
-| Sábado | 07:00 – 14:00 |
+| Lunes – Viernes | 08:00 – 17:00 |
+| Sábado | 08:00 – 14:00 |
 | Domingo | Cerrado |
 
 ---
@@ -64,9 +64,7 @@
 |---|---|
 | **Truper** | Principal — aparece en nombre Waze como "Dismafer/TRUPER" |
 | Stanley | Distribución regular |
-| Toolcraft | Distribución regular |
 | Tramontina | Distribución regular |
-| Power Tech | Distribución regular |
 
 ---
 
@@ -134,4 +132,4 @@
 | 4 | WhatsApp (+502 5833-0848) es canal de ventas prioritario — debe estar visible |
 | 5 | El catálogo actual en WooCommerce existe pero puede necesitar mejoras de UX |
 | 6 | La alianza con Truper es un diferenciador a comunicar en el sitio |
-| 7 | Email corporativo activo: jvargas@dismafer.shop |
+| 7 | Email corporativo activo: info@dismafer.shop |

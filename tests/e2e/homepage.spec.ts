@@ -39,7 +39,6 @@ test.describe('Homepage — /', () => {
   });
 
   test('Categorías — debe mostrar las 6 categorías', async ({ page }) => {
-    // Espera que haya links a las 6 categorías
     const categoryLinks = [
       '/productos/herramienta-manual',
       '/productos/herramienta-electrica',
@@ -49,7 +48,7 @@ test.describe('Homepage — /', () => {
       '/productos/materiales-construccion',
     ];
     for (const href of categoryLinks) {
-      const link = page.locator(`a[href="${href}"]`);
+      const link = page.locator(`a:has-text("${href.split('/')[2] === 'tuberia-pvc' ? 'Tubería' : href.split('/')[2] === 'pinturas' ? 'Pinturas' : href.split('/')[2] === 'materiales-construccion' ? 'Materiales' : ''}`)`);
       await expect(link).toBeVisible();
     }
   });

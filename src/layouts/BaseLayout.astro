@@ -20,82 +20,83 @@ const siteName = 'Ferretería Dismafer';
 
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="generator" content={Astro.generator} />
-  <link rel="canonical" href={canonicalURL} />
-  {noindex && <meta name="robots" content="noindex,nofollow" />}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
 
-  <!-- SEO básico -->
-  <title>{title}</title>
-  <meta name="description" content={description} />
+    <!-- SEO básico -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={new URL(image, Astro.site)} />
-  <meta property="og:url" content={canonicalURL} />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content={siteName} />
-  <meta property="og:locale" content="es_GT" />
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="es_GT" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={new URL(image, Astro.site)} />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site)} />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <!-- Schema.org LocalBusiness -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "HardwareStore",
-    "name": "Ferretería Dismafer",
-    "url": "https://dismafer.shop",
-    "logo": "https://dismafer.shop/logo.svg",
-    "image": "https://dismafer.shop/og-image.jpg",
-    "description": "Ferretería con más de 20 años en Zona 9, Ciudad de Guatemala. Herramientas manuales, eléctricas, materiales de construcción y seguridad industrial.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "2ª Calle 2-77",
-      "addressLocality": "Zona 9, Ciudad de Guatemala",
-      "addressCountry": "GT"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "14.5977",
-      "longitude": "-90.5147"
-    },
-    "telephone": "+502-2339-0468",
-    "email": "jvargas@dismafer.shop",
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "07:00",
-        "closes": "17:30"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "07:00",
-        "closes": "14:00"
-      }
-    ],
-    "priceRange": "$$",
-    "currenciesAccepted": "GTQ",
-    "paymentAccepted": "Cash, Bank Transfer",
-    "sameAs": [
-      "https://www.facebook.com/dismaferz9/"
-    ]
-  })} />
+    <!-- Schema.org LocalBusiness -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'HardwareStore',
+        name: 'Ferretería Dismafer',
+        url: 'https://dismafer.shop',
+        logo: 'https://dismafer.shop/logo.svg',
+        image: 'https://dismafer.shop/og-image.jpg',
+        description:
+          'Ferretería con más de 20 años en Zona 9, Ciudad de Guatemala. Herramientas manuales, eléctricas, materiales de construcción y seguridad industrial.',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: '2ª Calle 2-73',
+          addressLocality: 'Zona 9, Ciudad de Guatemala',
+          addressCountry: 'GT',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: '14.5977',
+          longitude: '-90.5147',
+        },
+telephone: '+502-2339-0468',
+         openingHoursSpecification: [
+          {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+            opens: '08:00',
+            closes: '17:00',
+          },
+          {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: 'Saturday',
+            opens: '08:00',
+            closes: '14:00',
+          },
+        ],
+        priceRange: '$$',
+        currenciesAccepted: 'GTQ',
+        paymentAccepted: 'Cash, Bank Transfer',
+        sameAs: ['https://www.facebook.com/dismaferz9/'],
+      })}
+    />
 
-  <!-- Styles injected via frontmatter import -->
-</head>
-<body>
-  <slot />
-</body>
+    <!-- Styles injected via frontmatter import -->
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>

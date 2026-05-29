@@ -1,0 +1,47 @@
+name: ✨ Feature Request
+description: Proponer una nueva funcionalidad o mejora
+labels: ['enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ¿Tenés una idea para mejorar el sitio? Contanos.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema o necesidad
+      description: ¿Qué problema resuelve esta funcionalidad?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solución propuesta
+      description: Describí cómo te imaginas la funcionalidad.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Prioridad estimada
+      options:
+        - Alta (impacta ventas / conversión)
+        - Media (mejora experiencia)
+        - Baja (nice-to-have)
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas consideradas
+      description: ¿Hay otras formas de resolver esto?
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto adicional
+      description: Screenshots, referencias, ejemplos de otros sitios, etc.

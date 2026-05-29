@@ -93,9 +93,11 @@ export default defineConfig({
     },
   ],
 
-  /* Servidor de preview — se construye antes de los tests */
+  /* Servidor de preview
+     - CI: dist ya está descargado → solo preview (ahorra ~15s de rebuild)
+     - Local: build + preview para asegurar que el dist está fresco */
   webServer: {
-    command: 'pnpm build && pnpm preview',
+    command: isCI ? 'pnpm preview' : 'pnpm build && pnpm preview',
     url: 'http://localhost:4321',
     reuseExistingServer: !isCI,
     timeout: 120_000,

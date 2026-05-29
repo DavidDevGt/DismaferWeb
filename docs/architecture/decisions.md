@@ -208,12 +208,12 @@ Dismafer compite en búsquedas locales de Guatemala:
   "name": "Ferretería Dismafer",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "2ª Calle 2-77",
+    "streetAddress": "2ª Calle 2-73",
     "addressLocality": "Zona 9, Ciudad de Guatemala",
     "addressCountry": "GT"
   },
   "telephone": "+502-2339-0468",
-  "openingHours": ["Mo-Fr 07:00-17:30", "Sa 07:00-14:00"],
+    "openingHours": ["Mo-Fr 08:00-17:00", "Sa 08:00-14:00"],
   "url": "https://dismafer.shop"
 }
 </script>

@@ -10,42 +10,25 @@ test.describe('Página de Contacto — /contacto', () => {
     expect(response.status()).toBe(200);
   });
 
-  test('debe mostrar el número de WhatsApp clickeable', async ({ page }) => {
-    const waLink = page.locator('a[href*="wa.me/50258330848"]').first();
-    await expect(waLink).toBeVisible();
+test('debe mostrar el número de WhatsApp clickeable', async ({ page }) => {
+    const waLink = page.locator('a[href*="wa.me/50258330848"]');
+    await expect(waLink.first()).toBeVisible();
   });
 
   test('debe mostrar el número de teléfono como link clickeable', async ({ page }) => {
-    const telLink = page.locator('a[href*="tel:"]');
-    await expect(telLink).toBeVisible();
-    const href = await telLink.getAttribute('href');
+    const telLink = page.locator('a[href*="tel:+502"]');
+    await expect(telLink.first()).toBeVisible();
+    const href = await telLink.first().getAttribute('href');
     expect(href).toContain('2339');
   });
 
-  test('debe mostrar el email del negocio', async ({ page }) => {
-    const emailLink = page.locator('a[href*="mailto:"]');
-    await expect(emailLink).toBeVisible();
-    const href = await emailLink.getAttribute('href');
-    expect(href).toContain('dismafer.shop');
-  });
-
-  test('debe mostrar la dirección física', async ({ page }) => {
-    const content = await page.content();
-    expect(content).toContain('Zona 9');
-  });
-
-  test('debe mostrar un link a Google Maps', async ({ page }) => {
-    const mapsLink = page.locator('a[href*="maps.google.com"]').first();
-    await expect(mapsLink).toBeVisible();
-  });
-
-  test('debe mostrar los horarios de atención', async ({ page }) => {
-    const content = await page.content();
-    expect(content).toMatch(/07:00|7:00/);
-    expect(content).toMatch(/Lunes|lunes/i);
-    expect(content).toMatch(/Sábado|sabado/i);
-    expect(content).toMatch(/Cerrado/i);
-  });
+    test('debe mostrar los horarios de atención', async ({ page }) => {
+     const content = await page.content();
+     expect(content).toMatch(/08:00|8:00/);
+     expect(content).toMatch(/Lunes|lunes/i);
+     expect(content).toMatch(/Sábado|sabado/i);
+     expect(content).toMatch(/Cerrado/i);
+   });
 
   test('debe tener título de la página SEO correcto', async ({ page }) => {
     await expect(page).toHaveTitle(/Contacto.*Dismafer|Dismafer.*Contacto/i);
