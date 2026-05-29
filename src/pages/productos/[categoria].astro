@@ -1,9 +1,8 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import PageLayout from '../../layouts/PageLayout.astro';
-import { categories, getCategoryBySlug, getProductsByCategory } from '../../data/index';
+import { categories, getCategoryBySlug } from '../../data/index';
 import Container from '../../components/ui/Container.astro';
-import Badge from '../../components/ui/Badge.astro';
 import Breadcrumb from '../../components/ui/Breadcrumb.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -15,7 +14,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const { categoria } = Astro.params;
 const category = getCategoryBySlug(categoria!);
-const products = getProductsByCategory(categoria!);
 
 if (!category) return Astro.redirect('/productos');
 ---
