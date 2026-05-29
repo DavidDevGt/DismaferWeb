@@ -8,13 +8,11 @@ describe('Brands data', () => {
     });
 
     it('debe incluir las marcas principales de Dismafer', () => {
-      const names = brands.map((b) => b.name);
-      expect(names).toContain('Truper');
-      expect(names).toContain('Stanley');
-      expect(names).toContain('Tramontina');
-      expect(names).toContain('Toolcraft');
-      expect(names).toContain('Power Tech');
-    });
+       const names = brands.map((b) => b.name);
+       expect(names).toContain('Truper');
+       expect(names).toContain('Stanley');
+       expect(names).toContain('Tramontina');
+     });
 
     it('todos los ids deben ser únicos', () => {
       const ids = brands.map((b) => b.id);

@@ -55,19 +55,6 @@ export const products: Product[] = [
     tags: ['taladro', 'percutor', 'concreto'],
     available: true,
   },
-  {
-    id: 'esmeril-angular-4.5-power-tech',
-    name: 'Esmeril Angular 4½" 800W Power Tech',
-    slug: 'esmeril-angular-4-5-power-tech',
-    categoryId: 'herramienta-electrica',
-    brandId: 'power-tech',
-    description:
-      'Esmeril angular de 4½" con motor de 800W. Ideal para cortar, desbastar y pulir metal. Incluye disco de corte y disco de desbaste.',
-    shortDescription: 'Esmeril angular 4½" 800W con disco',
-    featured: true,
-    tags: ['esmeril', 'angular', 'corte'],
-    available: true,
-  },
   // Tubería y PVC
   {
     id: 'tubo-pvc-agua-1-pulgada',

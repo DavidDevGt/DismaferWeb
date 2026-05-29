@@ -26,22 +26,6 @@ export const brands: Brand[] = [
     featured: true,
     country: 'Brasil',
   },
-  {
-    id: 'toolcraft',
-    name: 'Toolcraft',
-    slug: 'toolcraft',
-    description: 'Herramientas profesionales con excelente relación calidad-precio.',
-    featured: true,
-    country: 'Alemania',
-  },
-  {
-    id: 'power-tech',
-    name: 'Power Tech',
-    slug: 'power-tech',
-    description: 'Herramientas eléctricas de potencia para uso profesional e industrial.',
-    featured: true,
-    country: 'Internacional',
-  },
 ];
 
 export const featuredBrands = brands.filter((b) => b.featured);

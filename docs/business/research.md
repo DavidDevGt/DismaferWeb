@@ -30,8 +30,8 @@
 
 | Día | Horario |
 |---|---|
-| Lunes – Viernes | 07:00 – 17:30 |
-| Sábado | 07:00 – 14:00 |
+| Lunes – Viernes | 08:00 – 17:00 |
+| Sábado | 08:00 – 14:00 |
 | Domingo | Cerrado |
 
 ---
@@ -64,9 +64,7 @@
 |---|---|
 | **Truper** | Principal — aparece en nombre Waze como "Dismafer/TRUPER" |
 | Stanley | Distribución regular |
-| Toolcraft | Distribución regular |
 | Tramontina | Distribución regular |
-| Power Tech | Distribución regular |
 
 ---
 

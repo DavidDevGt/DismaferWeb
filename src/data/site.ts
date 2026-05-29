@@ -17,8 +17,8 @@ export const siteConfig: SiteConfig = {
     mapUrl: 'https://maps.google.com/?q=Ferreteria+Dismafer+2a+Calle+2-73+Zona+9+Guatemala',
   },
   hours: {
-    weekdays: '07:00 – 17:30',
-    saturday: '07:00 – 14:00',
+    weekdays: '08:00 – 17:00',
+    saturday: '08:00 – 14:00',
     sunday: 'Cerrado',
   },
   social: {

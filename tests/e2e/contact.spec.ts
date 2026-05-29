@@ -22,13 +22,13 @@ test('debe mostrar el número de WhatsApp clickeable', async ({ page }) => {
     expect(href).toContain('2339');
   });
 
-  test('debe mostrar los horarios de atención', async ({ page }) => {
-    const content = await page.content();
-    expect(content).toMatch(/07:00|7:00/);
-    expect(content).toMatch(/Lunes|lunes/i);
-    expect(content).toMatch(/Sábado|sabado/i);
-    expect(content).toMatch(/Cerrado/i);
-  });
+    test('debe mostrar los horarios de atención', async ({ page }) => {
+     const content = await page.content();
+     expect(content).toMatch(/08:00|8:00/);
+     expect(content).toMatch(/Lunes|lunes/i);
+     expect(content).toMatch(/Sábado|sabado/i);
+     expect(content).toMatch(/Cerrado/i);
+   });
 
   test('debe tener título de la página SEO correcto', async ({ page }) => {
     await expect(page).toHaveTitle(/Contacto.*Dismafer|Dismafer.*Contacto/i);
