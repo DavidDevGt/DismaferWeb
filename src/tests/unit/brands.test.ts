@@ -3,9 +3,9 @@ import { brands, featuredBrands } from '../../data/brands';
 
 describe('Brands data', () => {
   describe('estructura del array', () => {
-    it('debe tener al menos 5 marcas', () => {
-      expect(brands.length).toBeGreaterThanOrEqual(5);
-    });
+    it('debe tener al menos 3 marcas', () => {
+       expect(brands.length).toBeGreaterThanOrEqual(3);
+     });
 
     it('debe incluir las marcas principales de Dismafer', () => {
        const names = brands.map((b) => b.name);

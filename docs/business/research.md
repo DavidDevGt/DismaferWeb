@@ -70,14 +70,6 @@
 
 ## Presencia Digital Actual
 
-### dismafer.shop
-- Plataforma: WordPress + WooCommerce
-- Estado: Activo en producción
-- Páginas indexadas confirmadas:
-  - `/` — Inicio
-  - `/product-category/herramienta-electrica/`
-  - `/contacto/` — Formulario + opción de cotización
-
 ### Redes Sociales
 - Facebook activo: ~823 likes — publica productos y promociones
 - Handle oficial: @dismaferz9
@@ -126,7 +118,7 @@
 
 | # | Observación |
 |---|---|
-| 1 | El dominio `dismafer.shop` ya está en producción — este proyecto es un rediseño |
+| 1 | El dominio `dismafer.org` ya está en producción — este proyecto es un rediseño |
 | 2 | Confirmar cuál de los dos teléfonos es el principal para el sitio |
 | 3 | La página de Facebook `dismaferz9` es la oficial (coincide con el manual de marca) |
 | 4 | WhatsApp (+502 5833-0848) es canal de ventas prioritario — debe estar visible |
