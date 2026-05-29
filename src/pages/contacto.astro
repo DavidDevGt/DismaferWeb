@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import Container from '../components/ui/Container.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
 ---
 
 <PageLayout
@@ -9,12 +10,8 @@ import Container from '../components/ui/Container.astro';
 >
   <div class="bg-primary text-white py-12">
     <Container>
-      <nav class="text-sm text-white/60 mb-4" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-white no-underline">Inicio</a>
-        <span class="mx-2">/</span>
-        <span class="text-white">Contacto</span>
-      </nav>
-      <h1 class="text-3xl sm:text-4xl font-heading font-bold">Contáctanos</h1>
+      <Breadcrumb items={[{ label: 'Inicio', href: '/' }, { label: 'Contacto' }]} />
+      <h1 class="text-3xl sm:text-4xl font-heading font-bold mt-6">Contáctanos</h1>
       <p class="text-white/80 mt-2">Estamos para ayudarte. Respuesta rápida por WhatsApp.</p>
     </Container>
   </div>

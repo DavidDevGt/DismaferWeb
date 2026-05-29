@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SkipLink from '../components/ui/SkipLink.astro';
 
 interface Props {
   title?: string;
@@ -97,6 +98,7 @@ telephone: '+502-2339-0468',
     <!-- Styles injected via frontmatter import -->
   </head>
   <body>
+    <SkipLink />
     <slot />
   </body>
 </html>

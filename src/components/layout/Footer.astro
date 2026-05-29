@@ -1,6 +1,11 @@
 ---
 const currentYear = new Date().getFullYear();
 const whatsappUrl = 'https://wa.me/50258330848';
+const businessHours = [
+  { day: 'Lunes a Viernes', hours: '8:00 - 17:00' },
+  { day: 'Sábado', hours: '8:00 - 14:00' },
+  { day: 'Domingo', hours: 'Cerrado' },
+];
 
 const productLinks = [
   { href: '/productos/herramientas-manuales', label: 'Herramientas Manuales' },
@@ -16,12 +21,27 @@ const infoLinks = [
   { href: '/marcas', label: 'Nuestras Marcas' },
   { href: '/contacto', label: 'Contacto' },
 ];
+
+const socialLinks = [
+  {
+    name: 'Facebook',
+    href: 'https://www.facebook.com/dismaferz9/',
+    icon: 'facebook',
+    color: 'hover:bg-blue-600',
+  },
+  {
+    name: 'WhatsApp',
+    href: whatsappUrl,
+    icon: 'whatsapp',
+    color: 'hover:bg-green-500',
+  },
+];
 ---
 
-<footer class="bg-gray-900 text-white">
+<footer class="bg-gradient-to-b from-gray-900 to-gray-950 text-white border-t border-gray-800">
   <!-- Main footer content -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
       <!-- Brand column -->
       <div class="lg:col-span-1">
         <!-- Logo -->
