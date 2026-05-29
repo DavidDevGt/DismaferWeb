@@ -29,7 +29,7 @@ import Container from '../ui/Container.astro';
             required
             minlength="3"
             placeholder="Tu nombre"
-            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all"
             aria-describedby="nameError"
           />
           <span id="nameError" class="text-red-500 text-sm mt-1 hidden"></span>
@@ -47,7 +47,7 @@ import Container from '../ui/Container.astro';
             name="email"
             required
             placeholder="tu@email.com"
-            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all"
             aria-describedby="emailError"
           />
           <span id="emailError" class="text-red-500 text-sm mt-1 hidden"></span>
@@ -66,7 +66,7 @@ import Container from '../ui/Container.astro';
             required
             placeholder="(502) XXXX-XXXX"
             pattern="[0-9\s\-\+\(\)]+"
-            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all"
             aria-describedby="phoneError"
           />
           <span id="phoneError" class="text-red-500 text-sm mt-1 hidden"></span>
@@ -82,7 +82,7 @@ import Container from '../ui/Container.astro';
             id="category"
             name="category"
             required
-            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none bg-white"
+            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all appearance-none bg-white"
             aria-describedby="categoryError"
           >
             <option value="">Selecciona una categoría</option>
@@ -110,7 +110,7 @@ import Container from '../ui/Container.astro';
             minlength="10"
             rows="5"
             placeholder="Cuéntanos qué necesitas..."
-            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all resize-none"
             aria-describedby="messageError"
           ></textarea>
           <span id="messageError" class="text-red-500 text-sm mt-1 hidden"></span>
@@ -123,7 +123,7 @@ import Container from '../ui/Container.astro';
             id="privacy"
             name="privacy"
             required
-            class="w-5 h-5 border border-gray-200 rounded text-primary focus:ring-primary cursor-pointer mt-0.5"
+            class="w-5 h-5 border border-gray-200 rounded text-primary focus:ring-blue-900 cursor-pointer mt-0.5"
             aria-describedby="privacyError"
           />
           <label for="privacy" class="text-sm text-neutral cursor-pointer">
@@ -286,6 +286,8 @@ import Container from '../ui/Container.astro';
   input:focus,
   textarea:focus,
   select:focus {
-    @apply outline-none ring-2 ring-primary ring-offset-0 border-transparent;
+    outline: none;
+    ring: 2px solid #022e51;
+    border-color: transparent;
   }
 </style>
