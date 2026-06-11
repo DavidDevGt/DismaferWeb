@@ -1,15 +1,24 @@
-# Vercel Analytics — DismaferWeb
+# Vercel Analytics & Speed Insights — DismaferWeb
 
-## Descripción
+## Descripción General
 
-**Vercel Analytics** es un servicio de análisis integrado que monitorea:
-- 📊 Page views (vistas de página)
-- 👥 Unique visitors (visitantes únicos)
-- ⏱️ Core Web Vitals (LCP, FID, CLS)
-- 🌍 Geographic data (ubicación de visitantes)
-- 📱 Device & browser info (dispositivo y navegador)
+DismaferWeb utiliza dos herramientas complementarias de Vercel:
 
-**Sin cookies de terceros** — Respeta privacidad del usuario.
+### 📊 Vercel Analytics
+Monitorea comportamiento de usuarios:
+- Page views (vistas de página)
+- Unique visitors (visitantes únicos)
+- Geographic data (ubicación de visitantes)
+- Device & browser info (dispositivo y navegador)
+
+### ⚡ Vercel Speed Insights
+Monitorea rendimiento de la aplicación:
+- Core Web Vitals (LCP, FID, CLS)
+- TTFB (Time to First Byte)
+- Métricas de runtime
+- Alertas de regresión de performance
+
+**Sin cookies de terceros** — Ambos respetan privacidad del usuario.
 
 ---
 
@@ -18,21 +27,27 @@
 ### 1. Instalación
 
 ```bash
+# Analytics (traffic)
 pnpm add @vercel/analytics
+
+# Speed Insights (performance)
+pnpm add @vercel/speed-insights
 ```
 
-### 2. Agregar Analytics al layout
+### 2. Agregar componentes al layout
 
 ```astro
 ---
 // src/layouts/BaseLayout.astro
 import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 ---
 
 <html>
   <body>
     <slot />
     <Analytics />
+    <SpeedInsights />
   </body>
 </html>
 ```
@@ -54,22 +69,31 @@ Analytics comienza a recolectar datos automáticamente después del deploy.
 
 1. Ir a https://vercel.com/dashboard
 2. Seleccionar el proyecto `dismafer-web`
-3. Click en pestaña **Analytics**
+3. Dos pestañas disponibles:
+   - **Analytics** — Traffic y usuarios
+   - **Speed Insights** — Performance y Web Vitals
 
-### Métricas disponibles
+### Métricas de Analytics (Traffic)
 
 | Métrica | Descripción |
 |---|---|
 | **Page Views** | Total de vistas de página |
 | **Unique Visitors** | Visitantes únicos (basado en hash de IP) |
-| **LCP** | Largest Contentful Paint (target < 2.5s) |
-| **FID** | First Input Delay (target < 100ms) |
-| **CLS** | Cumulative Layout Shift (target < 0.1) |
-| **TTFB** | Time to First Byte (target < 200ms) |
 | **Geographic** | Países/ciudades con más traffic |
 | **Device** | Desktop/Mobile/Tablet breakdown |
 | **OS** | Windows/macOS/iOS/Android |
 | **Browser** | Chrome/Firefox/Safari/Edge |
+
+### Métricas de Speed Insights (Performance)
+
+| Métrica | Descripción | Target |
+|---|---|---|
+| **LCP** | Largest Contentful Paint | < 2.5s |
+| **FID** | First Input Delay | < 100ms |
+| **CLS** | Cumulative Layout Shift | < 0.1 |
+| **TTFB** | Time to First Byte | < 200ms |
+| **SUMBIT** | Server + Browser rendering | < 3s |
+| **Interaction to Paint** | Respuesta a interacción | < 200ms |
 
 ---
 
