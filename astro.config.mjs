@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  site: 'https://dismafer.shop',
+  site: 'https://dismafer.org',
 
   /* Optimizaciones de build */
   compressHTML: true,

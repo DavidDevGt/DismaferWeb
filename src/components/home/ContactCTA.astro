@@ -1,5 +1,6 @@
 ---
 import Container from '../ui/Container.astro';
+import GoogleMapsEmbed from '../GoogleMapsEmbed.astro';
 import { Icon } from 'astro-icon/components';
 ---
 
@@ -83,23 +84,8 @@ import { Icon } from 'astro-icon/components';
         </a>
       </div>
 
-      <!-- Mapa placeholder (usar iframe de Google Maps en producción) -->
-      <div
-        class="rounded-2xl overflow-hidden shadow-lg bg-primary/10 h-80 lg:h-auto flex items-center justify-center border-2 border-dashed border-primary/20"
-      >
-        <div class="text-center p-8">
-          <Icon name="lucide:map" class="w-12 h-12 text-primary/40 mx-auto mb-3" />
-          <p class="text-primary/60 font-medium">2ª Calle 2-73, Zona 9</p>
-          <p class="text-primary/40 text-sm mt-1">Ciudad de Guatemala</p>
-          <a
-            href="https://maps.google.com/?q=Ferreteria+Dismafer+2a+Calle+2-73+Zona+9+Guatemala"
-            target="_blank"
-            class="mt-4 inline-block text-accent font-semibold text-sm hover:underline"
-          >
-            Abrir en Google Maps →
-          </a>
-        </div>
-      </div>
+      <!-- Google Maps Embed -->
+      <GoogleMapsEmbed height="h-80 lg:h-auto" />
     </div>
   </Container>
 </section>

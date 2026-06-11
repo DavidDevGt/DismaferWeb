@@ -2,6 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import Container from '../components/ui/Container.astro';
 import Breadcrumb from '../components/ui/Breadcrumb.astro';
+import GoogleMapsEmbed from '../components/GoogleMapsEmbed.astro';
 import { Icon } from 'astro-icon/components';
 ---
 
@@ -111,22 +112,9 @@ import { Icon } from 'astro-icon/components';
             </div>
           </div>
 
-          <!-- Mapa placeholder -->
-          <div
-            class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm h-64 flex items-center justify-center"
-          >
-            <div class="text-center p-6">
-              <Icon name="lucide:map" class="w-10 h-10 text-primary/30 mx-auto mb-2" />
-              <p class="font-semibold text-primary">2ª Calle 2-73, Zona 9</p>
-              <p class="text-neutral text-sm">Ciudad de Guatemala</p>
-              <a
-                href="https://maps.google.com/?q=Ferreteria+Dismafer+2a+Calle+2-73+Zona+9+Guatemala"
-                target="_blank"
-                class="mt-3 inline-block text-accent font-semibold text-sm hover:underline"
-              >
-                Abrir en Google Maps →
-              </a>
-            </div>
+          <!-- Google Maps Embed -->
+          <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm h-64">
+            <GoogleMapsEmbed height="h-64" />
           </div>
         </div>
       </div>
