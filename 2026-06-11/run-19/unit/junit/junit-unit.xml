@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="Unit — DismaferWeb" tests="44" failures="0" errors="0" time="0.033726586">
+    <testsuite name="src/tests/unit/brands.test.ts" timestamp="2026-06-11T15:11:11.942Z" hostname="runnervm1li68" tests="9" failures="0" errors="0" skipped="0" time="0.007176464">
+        <testcase classname="src/tests/unit/brands.test.ts" name="Brands data &gt; estructura del array &gt; debe tener al menos 3 marcas" time="0.001934798">
+        </testcase>
+        <testcase classname="src/tests/unit/brands.test.ts" name="Brands data &gt; estructura del array &gt; debe incluir las marcas principales de Dismafer" time="0.001029716">
+        </testcase>
+        <testcase classname="src/tests/unit/brands.test.ts" name="Brands data &gt; estructura del array &gt; todos los ids deben ser únicos" time="0.000243689">
+        </testcase>
+        <testcase classname="src/tests/unit/brands.test.ts" name="Brands data &gt; estructura del array &gt; todos los slugs deben ser únicos" time="0.000171682">
+        </testcase>
+        <testcase classname="src/tests/unit/brands.test.ts" name="Brands data &gt; integridad de campos &gt; cada marca debe tener todos los campos requeridos" time="0.000592101">
+        </testcase>
+        <testcase classname="src/tests/unit/brands.test.ts" name="Brands data &gt; integridad de campos &gt; los slugs no deben contener espacios ni mayúsculas" time="0.000336525">
+        </testcase>
+        <testcase classname="src/tests/unit/brands.test.ts" name="Brands data &gt; featuredBrands &gt; featuredBrands debe ser un subconjunto de brands" time="0.000306041">
+        </testcase>
+        <testcase classname="src/tests/unit/brands.test.ts" name="Brands data &gt; featuredBrands &gt; todas las marcas en featuredBrands deben tener featured=true" time="0.000273983">
+        </testcase>
+        <testcase classname="src/tests/unit/brands.test.ts" name="Brands data &gt; featuredBrands &gt; Truper debe estar en featuredBrands (marca principal de Dismafer)" time="0.000269687">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/tests/unit/categories.test.ts" timestamp="2026-06-11T15:11:11.944Z" hostname="runnervm1li68" tests="12" failures="0" errors="0" skipped="0" time="0.010919544">
+        <testcase classname="src/tests/unit/categories.test.ts" name="Categories data &gt; estructura del array &gt; debe tener exactamente 6 categorías" time="0.003387116">
+        </testcase>
+        <testcase classname="src/tests/unit/categories.test.ts" name="Categories data &gt; estructura del array &gt; debe incluir las 6 categorías requeridas por el negocio" time="0.001062894">
+        </testcase>
+        <testcase classname="src/tests/unit/categories.test.ts" name="Categories data &gt; estructura del array &gt; todos los slugs deben ser únicos" time="0.000338758">
+        </testcase>
+        <testcase classname="src/tests/unit/categories.test.ts" name="Categories data &gt; estructura del array &gt; todos los ids deben ser únicos" time="0.000181628">
+        </testcase>
+        <testcase classname="src/tests/unit/categories.test.ts" name="Categories data &gt; integridad de campos &gt; cada categoría debe tener todos los campos requeridos" time="0.001094692">
+        </testcase>
+        <testcase classname="src/tests/unit/categories.test.ts" name="Categories data &gt; integridad de campos &gt; los slugs no deben contener espacios ni mayúsculas" time="0.00043479">
+        </testcase>
+        <testcase classname="src/tests/unit/categories.test.ts" name="Categories data &gt; integridad de campos &gt; las descriptions deben tener al menos 10 caracteres" time="0.000480537">
+        </testcase>
+        <testcase classname="src/tests/unit/categories.test.ts" name="Categories data &gt; integridad de campos &gt; los colors deben ser clases Tailwind válidas" time="0.000327482">
+        </testcase>
+        <testcase classname="src/tests/unit/categories.test.ts" name="Categories data &gt; getCategoryBySlug() &gt; debe retornar la categoría correcta para un slug válido" time="0.000298068">
+        </testcase>
+        <testcase classname="src/tests/unit/categories.test.ts" name="Categories data &gt; getCategoryBySlug() &gt; debe retornar undefined para un slug inexistente" time="0.00026457">
+        </testcase>
+        <testcase classname="src/tests/unit/categories.test.ts" name="Categories data &gt; getCategoryBySlug() &gt; debe retornar undefined para string vacío" time="0.000134408">
+        </testcase>
+        <testcase classname="src/tests/unit/categories.test.ts" name="Categories data &gt; getCategoryBySlug() &gt; debe funcionar para cada uno de los 6 slugs válidos" time="0.000478545">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/tests/unit/data-index.test.ts" timestamp="2026-06-11T15:11:11.947Z" hostname="runnervm1li68" tests="6" failures="0" errors="0" skipped="0" time="0.004588364">
+        <testcase classname="src/tests/unit/data-index.test.ts" name="Data index barrel export &gt; debe exportar siteConfig" time="0.001956901">
+        </testcase>
+        <testcase classname="src/tests/unit/data-index.test.ts" name="Data index barrel export &gt; debe exportar categories como array" time="0.000287764">
+        </testcase>
+        <testcase classname="src/tests/unit/data-index.test.ts" name="Data index barrel export &gt; debe exportar getCategoryBySlug como función" time="0.000154508">
+        </testcase>
+        <testcase classname="src/tests/unit/data-index.test.ts" name="Data index barrel export &gt; debe exportar brands como array" time="0.000149169">
+        </testcase>
+        <testcase classname="src/tests/unit/data-index.test.ts" name="Data index barrel export &gt; debe exportar featuredBrands como array" time="0.000107588">
+        </testcase>
+        <testcase classname="src/tests/unit/data-index.test.ts" name="Data index barrel export &gt; consistencia: featuredBrands es subconjunto de brands" time="0.000172294">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/tests/unit/site.test.ts" timestamp="2026-06-11T15:11:11.948Z" hostname="runnervm1li68" tests="17" failures="0" errors="0" skipped="0" time="0.011042214">
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; información básica &gt; debe tener nombre del negocio" time="0.00306403">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; información básica &gt; debe tener tagline" time="0.00029178">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; información básica &gt; debe tener descripción" time="0.000313912">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; información básica &gt; url debe ser una URL válida" time="0.001439138">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; información básica &gt; url debe usar https" time="0.000317046">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; contacto &gt; debe tener teléfono en formato internacional" time="0.000220013">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; contacto &gt; debe tener número de WhatsApp" time="0.000268926">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; contacto &gt; whatsappUrl debe apuntar a wa.me" time="0.000207025">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; contacto &gt; debe tener dirección completa" time="0.000349755">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; contacto &gt; debe tener URL de Google Maps" time="0.000207085">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; horarios &gt; debe tener horario de días de semana" time="0.000211531">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; horarios &gt; debe tener horario de sábado" time="0.000169129">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; horarios &gt; domingo debe indicar cerrado" time="0.000309406">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; horarios &gt; horario de semana debe tener formato HH:MM – HH:MM" time="0.000214916">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; redes sociales &gt; debe tener URL de Facebook" time="0.000235627">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; slogan &gt; debe tener slogan" time="0.000168798">
+        </testcase>
+        <testcase classname="src/tests/unit/site.test.ts" name="Site config &gt; slogan &gt; el slogan debe mencionar &quot;conseguimos&quot; (promesa de marca)" time="0.000164182">
+        </testcase>
+    </testsuite>
+</testsuites>
