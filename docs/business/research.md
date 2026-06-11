@@ -7,7 +7,7 @@
 | Nombre | Ferretería Dismafer |
 | Slogan | "De TODO en Ferretería" / "Si no lo tenemos, te lo conseguimos" |
 | Tipo | Ferretería — venta al detalle y mayor |
-| Fundación | ~1987 (más de 20 años en el sector) |
+| Fundación | ~1995 (más de 20 años en el sector) |
 | Ubicación | 2ª Calle 2-73, Zona 9, Ciudad de Guatemala |
 
 ---
