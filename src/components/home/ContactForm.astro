@@ -1,5 +1,6 @@
 ---
 import Container from '../ui/Container.astro';
+import { categories } from '../../data/index';
 ---
 
 <section class="py-16 bg-white">
@@ -86,12 +87,7 @@ import Container from '../ui/Container.astro';
             aria-describedby="categoryError"
           >
             <option value="">Selecciona una categoría</option>
-            <option value="herramientas-manuales">Herramientas Manuales</option>
-            <option value="herramientas-electricas">Herramientas Eléctricas</option>
-            <option value="materiales-construccion">Materiales de Construcción</option>
-            <option value="plomeria-pvc">Plomería y PVC</option>
-            <option value="seguridad-industrial">Seguridad Industrial</option>
-            <option value="pintura">Pintura y Accesorios</option>
+            {categories.map((cat) => <option value={cat.slug}>{cat.name}</option>)}
             <option value="otro">Otro</option>
           </select>
           <span id="categoryError" class="text-red-500 text-sm mt-1 hidden"></span>
@@ -159,7 +155,6 @@ import Container from '../ui/Container.astro';
 
 <script>
   const form = document.getElementById('contactForm') as HTMLFormElement;
-  const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
   const formStatus = document.getElementById('formStatus') as HTMLDivElement;
 
   if (form) {
@@ -170,45 +165,31 @@ import Container from '../ui/Container.astro';
       input.addEventListener('change', validateField);
     });
 
-    // Submit del formulario
-    form.addEventListener('submit', async (e) => {
+    // Submit: el sitio es estático, el mensaje se envía vía WhatsApp
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
 
       if (!validateForm()) return;
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando...';
-      formStatus.className = 'hidden';
+      const formData = new FormData(form);
+      const categorySelect = form.querySelector('#category') as HTMLSelectElement;
+      const categoryLabel = categorySelect.selectedOptions[0]?.textContent ?? '';
 
-      try {
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
+      const message = [
+        `Nombre: ${formData.get('name')}`,
+        `Email: ${formData.get('email')}`,
+        `Teléfono: ${formData.get('phone')}`,
+        `Categoría: ${categoryLabel}`,
+        `Mensaje: ${formData.get('message')}`,
+      ].join('\n');
 
-        // Simular envío (en producción usar un endpoint real)
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        }).catch(() => {
-          // Fallback: WhatsApp si no hay endpoint
-          const message = `Nombre: ${data.name}%0AEmail: ${data.email}%0ATelefono: ${data.phone}%0ACategoria: ${data.category}%0AMensaje: ${data.message}`;
-          window.open(`https://wa.me/50258330848?text=${message}`);
-          return { ok: true };
-        });
-
-        if (response.ok) {
-          showStatus('success', '¡Mensaje enviado! Te contactaremos pronto.');
-          form.reset();
-        } else {
-          showStatus('error', 'Error al enviar. Intenta por WhatsApp directamente.');
-        }
-      } catch (error) {
-        console.error('Form submission error:', error);
-        showStatus('error', 'Error de conexión. Intenta nuevamente.');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Enviar mensaje';
-      }
+      window.open(
+        `https://wa.me/50258330848?text=${encodeURIComponent(message)}`,
+        '_blank',
+        'noopener'
+      );
+      showStatus('success', '¡Listo! Se abrió WhatsApp con tu mensaje. Envíalo para contactarnos.');
+      form.reset();
     });
   }
 
@@ -225,7 +206,7 @@ import Container from '../ui/Container.astro';
       isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
       errorMsg = 'Email inválido';
     } else if (input.type === 'tel') {
-      isValid = /[0-9\s\-\+\(\)]{8,}/.test(input.value);
+      isValid = /[0-9\s\-+()]{8,}/.test(input.value);
       errorMsg = 'Teléfono inválido';
     } else if (input.required && !input.value.trim()) {
       isValid = false;
@@ -281,13 +262,3 @@ import Container from '../ui/Container.astro';
     formStatus.classList.remove('hidden');
   }
 </script>
-
-<style>
-  input:focus,
-  textarea:focus,
-  select:focus {
-    outline: none;
-    ring: 2px solid #022e51;
-    border-color: transparent;
-  }
-</style>

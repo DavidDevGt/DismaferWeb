@@ -7,7 +7,6 @@ export interface Category {
   description: string;
   icon: string; // SVG path data
   color: string; // Tailwind bg class
-  productCount?: number;
 }
 
 export interface Brand {
@@ -18,20 +17,6 @@ export interface Brand {
   logoUrl?: string;
   featured: boolean;
   country: string;
-}
-
-export interface Product {
-  id: string;
-  name: string;
-  slug: string;
-  categoryId: string;
-  brandId: string;
-  description: string;
-  shortDescription: string;
-  imageUrl?: string;
-  featured: boolean;
-  tags: string[];
-  available: boolean;
 }
 
 export interface SiteConfig {

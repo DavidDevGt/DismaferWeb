@@ -10,8 +10,8 @@ test.describe('Página de Contacto — /contacto', () => {
     expect(response.status()).toBe(200);
   });
 
-test('debe mostrar el número de WhatsApp clickeable', async ({ page }) => {
-    const waLink = page.locator('a[href*="wa.me/50258330848"]');
+  test('debe mostrar el número de WhatsApp clickeable', async ({ page }) => {
+    const waLink = page.locator('main a[href*="wa.me/50258330848"]');
     await expect(waLink.first()).toBeVisible();
   });
 

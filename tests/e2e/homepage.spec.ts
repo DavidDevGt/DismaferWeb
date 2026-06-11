@@ -28,7 +28,7 @@ test.describe('Homepage — /', () => {
   });
 
   test('Hero — debe tener CTA de WhatsApp visible', async ({ page }) => {
-    const waLink = page.locator('a[href*="wa.me"]').first();
+    const waLink = page.locator('main a[href*="wa.me"]').first();
     await expect(waLink).toBeVisible();
   });
 
@@ -48,7 +48,7 @@ test.describe('Homepage — /', () => {
       '/productos/materiales-construccion',
     ];
     for (const href of categoryLinks) {
-      const link = page.locator(`a:has-text("${href.split('/')[2] === 'tuberia-pvc' ? 'Tubería' : href.split('/')[2] === 'pinturas' ? 'Pinturas' : href.split('/')[2] === 'materiales-construccion' ? 'Materiales' : ''}`)`);
+      const link = page.locator(`a[href="${href}"]`).first();
       await expect(link).toBeVisible();
     }
   });

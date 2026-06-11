@@ -11,7 +11,7 @@ test.describe('Mobile — Responsive design', () => {
 
   test('Botón flotante de WhatsApp es visible en móvil', async ({ page }) => {
     await page.goto('/');
-    const floatBtn = page.locator('a[href*="wa.me"]').first();
+    const floatBtn = page.locator('a[href*="wa.me"][class*="fixed"]');
     await expect(floatBtn).toBeVisible();
   });
 
@@ -36,10 +36,9 @@ test.describe('Mobile — Responsive design', () => {
 
   test('Tap targets de links principales son suficientemente grandes', async ({ page }) => {
     await page.goto('/');
-    const ctaLink = page.locator('a[href*="wa.me"]').first();
+    const ctaLink = page.locator('main a[href*="wa.me"]').first();
     const box = await ctaLink.boundingBox();
-    if (box) {
-      expect(box.height).toBeGreaterThanOrEqual(44);
-    }
+    expect(box).not.toBeNull();
+    expect(box!.height).toBeGreaterThanOrEqual(44);
   });
 });

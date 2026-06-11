@@ -1,15 +1,13 @@
 ---
-const currentYear = new Date().getFullYear();
-const whatsappUrl = 'https://wa.me/50258330848';
+import { siteConfig, categories } from '../../data/index';
 
-const productLinks = [
-  { href: '/productos/herramientas-manuales', label: 'Herramientas Manuales' },
-  { href: '/productos/herramientas-electricas', label: 'Herramientas Eléctricas' },
-  { href: '/productos/materiales-construccion', label: 'Materiales de Construcción' },
-  { href: '/productos/plomeria-pvc', label: 'Plomería y PVC' },
-  { href: '/productos/seguridad-industrial', label: 'Seguridad Industrial' },
-  { href: '/productos/pintura', label: 'Pintura y Accesorios' },
-];
+const currentYear = new Date().getFullYear();
+const whatsappUrl = siteConfig.contact.whatsappUrl;
+
+const productLinks = categories.map((cat) => ({
+  href: `/productos/${cat.slug}`,
+  label: cat.name,
+}));
 
 const infoLinks = [
   { href: '/nosotros', label: 'Sobre Nosotros' },
@@ -126,15 +124,15 @@ const infoLinks = [
         <ul class="space-y-1.5">
           <li class="flex justify-between text-sm">
             <span class="text-gray-400">Lun — Vie</span>
-            <span class="text-white font-medium">7:00 — 17:00</span>
+            <span class="text-white font-medium">{siteConfig.hours.weekdays}</span>
           </li>
           <li class="flex justify-between text-sm">
             <span class="text-gray-400">Sábado</span>
-            <span class="text-white font-medium">7:00 — 14:00</span>
+            <span class="text-white font-medium">{siteConfig.hours.saturday}</span>
           </li>
           <li class="flex justify-between text-sm">
             <span class="text-gray-400">Domingo</span>
-            <span class="text-gray-500 italic">Cerrado</span>
+            <span class="text-gray-500 italic">{siteConfig.hours.sunday}</span>
           </li>
         </ul>
       </div>
@@ -185,10 +183,10 @@ const infoLinks = [
               ></path>
             </svg>
             <a
-              href="tel:+50222390468"
+              href={`tel:${siteConfig.contact.phone}`}
               class="text-gray-400 hover:text-white text-sm transition-colors no-underline"
             >
-              (502) 2339-0468
+              {siteConfig.contact.phoneDisplay}
             </a>
           </li>
         </ul>
@@ -220,9 +218,9 @@ const infoLinks = [
         &copy; {currentYear} Ferretería Dismafer. Todos los derechos reservados.
       </p>
       <p class="text-gray-600 text-xs">
-        2ª Calle 2-73, Zona 9, Ciudad de Guatemala &bull; <a
-          href="tel:+50222390468"
-          class="hover:text-gray-400 transition-colors no-underline">(502) 2339-0468</a
+        {siteConfig.contact.address} &bull; <a
+          href={`tel:${siteConfig.contact.phone}`}
+          class="hover:text-gray-400 transition-colors no-underline">{siteConfig.contact.phoneDisplay}</a
         >
       </p>
     </div>

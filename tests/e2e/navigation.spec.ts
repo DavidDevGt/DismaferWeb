@@ -1,4 +1,14 @@
 import { test, expect } from '@playwright/test';
+import type { Page } from '@playwright/test';
+
+/** Hace click en un link del header; en móvil abre primero el menú hamburguesa. */
+async function clickHeaderLink(page: Page, href: string) {
+  const menuToggle = page.locator('#menu-toggle');
+  if (await menuToggle.isVisible()) {
+    await menuToggle.click();
+  }
+  await page.locator(`header a[href="${href}"]:visible`).first().click();
+}
 
 test.describe('Navegación', () => {
   test('Header debe estar visible en todas las páginas', async ({ page }) => {
@@ -27,25 +37,25 @@ test.describe('Navegación', () => {
 
   test('Nav — link Productos debe navegar a /productos', async ({ page }) => {
     await page.goto('/');
-    await page.locator('header a[href="/productos"]').first().click();
+    await clickHeaderLink(page, '/productos');
     await expect(page).toHaveURL('/productos');
   });
 
   test('Nav — link Marcas debe navegar a /marcas', async ({ page }) => {
     await page.goto('/');
-    await page.locator('header a[href="/marcas"]').first().click();
+    await clickHeaderLink(page, '/marcas');
     await expect(page).toHaveURL('/marcas');
   });
 
   test('Nav — link Nosotros debe navegar a /nosotros', async ({ page }) => {
     await page.goto('/');
-    await page.locator('header a[href="/nosotros"]').first().click();
+    await clickHeaderLink(page, '/nosotros');
     await expect(page).toHaveURL('/nosotros');
   });
 
   test('Nav — link Contacto debe navegar a /contacto', async ({ page }) => {
     await page.goto('/');
-    await page.locator('header a[href="/contacto"]').first().click();
+    await clickHeaderLink(page, '/contacto');
     await expect(page).toHaveURL('/contacto');
   });
 

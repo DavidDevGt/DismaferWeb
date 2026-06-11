@@ -5,10 +5,6 @@ import {
   getCategoryBySlug,
   brands,
   featuredBrands,
-  products,
-  featuredProducts,
-  getProductsByCategory,
-  getProductBySlug,
 } from '../../data/index';
 
 describe('Data index barrel export', () => {
@@ -35,34 +31,10 @@ describe('Data index barrel export', () => {
     expect(Array.isArray(featuredBrands)).toBe(true);
   });
 
-  it('debe exportar products como array', () => {
-    expect(Array.isArray(products)).toBe(true);
-    expect(products.length).toBeGreaterThan(0);
-  });
-
-  it('debe exportar featuredProducts como array', () => {
-    expect(Array.isArray(featuredProducts)).toBe(true);
-  });
-
-  it('debe exportar getProductsByCategory como función', () => {
-    expect(typeof getProductsByCategory).toBe('function');
-  });
-
-  it('debe exportar getProductBySlug como función', () => {
-    expect(typeof getProductBySlug).toBe('function');
-  });
-
   it('consistencia: featuredBrands es subconjunto de brands', () => {
     const allBrandIds = new Set(brands.map((b) => b.id));
     featuredBrands.forEach((fb) => {
       expect(allBrandIds.has(fb.id)).toBe(true);
-    });
-  });
-
-  it('consistencia: featuredProducts es subconjunto de products', () => {
-    const allProductIds = new Set(products.map((p) => p.id));
-    featuredProducts.forEach((fp) => {
-      expect(allProductIds.has(fp.id)).toBe(true);
     });
   });
 });

@@ -1,11 +1,13 @@
 ---
+import { siteConfig } from '../../data/index';
+
 const navLinks = [
   { href: '/productos', label: 'Productos' },
   { href: '/marcas', label: 'Marcas' },
   { href: '/nosotros', label: 'Nosotros' },
   { href: '/contacto', label: 'Contacto' },
 ];
-const whatsappUrl = 'https://wa.me/50258330848';
+const whatsappUrl = siteConfig.contact.whatsappUrl;
 const currentPath = Astro.url.pathname;
 ---
 

@@ -2,7 +2,6 @@ import js from '@eslint/js';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import astroPlugin from 'eslint-plugin-astro';
-import jsxA11y from 'eslint-plugin-jsx-a11y';
 import globals from 'globals';
 
 export default [
@@ -73,13 +72,13 @@ export default [
   /* ── Astro ───────────────────────────────────────────────────── */
   ...astroPlugin.configs.recommended,
 
-  /* ── JSX a11y (aplica a .astro y .tsx) ──────────────────────── */
+  /* ── JSX a11y para .astro (config oficial del plugin Astro,
+        que mapea atributos HTML como `for` correctamente) ──────── */
+  ...astroPlugin.configs['flat/jsx-a11y-recommended'],
   {
-    files: ['**/*.astro', '**/*.tsx'],
-    plugins: { 'jsx-a11y': jsxA11y },
+    files: ['**/*.astro'],
     rules: {
-      ...jsxA11y.configs.recommended.rules,
-      'jsx-a11y/anchor-is-valid': 'warn',
+      'astro/jsx-a11y/anchor-is-valid': 'warn',
     },
   },
 
