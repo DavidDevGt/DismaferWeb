@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import icon from 'astro-icon';
 
 export default defineConfig({
   site: 'https://dismafer.shop',
@@ -35,5 +36,6 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date(),
     }),
+    icon(),
   ],
 });
