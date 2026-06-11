@@ -59,6 +59,18 @@ Astro 5 + Tailwind CSS v4 + TypeScript + pnpm
 | Web actual | https://dismafer.shop                      |
 | RRSS       | @dismaferz9                                |
 
+## Seguridad y Privacidad
+
+Este proyecto implementa prácticas de seguridad robustas:
+
+- 🔒 **Política de Privacidad** — [/privacidad](https://dismafer.shop/privacidad)
+- 🛡️ **Política de Seguridad** — [SECURITY.md](./SECURITY.md)
+- ✅ **Security Headers** — CSP, HSTS, X-Frame-Options, etc.
+- 🔐 **HTTPS obligatorio** — Encriptación end-to-end
+- 📋 **Auditoría CISO** — Revisión completa de seguridad
+
+**Reportar vulnerabilidades:** Ver [SECURITY.md](./SECURITY.md) para divulgación responsable.
+
 ## Links rápidos
 
 - [dismafer.shop](https://dismafer.shop) — Sitio actual en producción
