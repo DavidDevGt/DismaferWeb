@@ -51,6 +51,7 @@
     "@iconify-json/lucide": "^1.2.111",
     "@tailwindcss/vite": "^4.3.0",
     "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "astro": "^6.4.6",
     "astro-icon": "^1.1.5",
     "tailwindcss": "^4.3.0"

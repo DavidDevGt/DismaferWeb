@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SkipLink from '../components/ui/SkipLink.astro';
 import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
   title?: string;
@@ -103,5 +104,6 @@ telephone: '+502-2339-0468',
     <SkipLink />
     <slot />
     <Analytics />
+    <SpeedInsights />
   </body>
 </html>
