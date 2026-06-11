@@ -26,13 +26,15 @@
 
 ```
 Astro 5
-├── Tailwind CSS v4          → Estilos utilitarios, compatible con design tokens de la marca
-├── TypeScript               → Tipado fuerte en todo el proyecto
-├── pnpm                     → Package manager rápido y eficiente en disco
-└── Integraciones opcionales
-    ├── @astrojs/sitemap     → SEO local (crítico para búsquedas "ferretería zona 9")
-    ├── @astrojs/image       → Optimización de imágenes de productos
-    └── Partytown            → Scripts de terceros (GA4, FB Pixel) fuera del hilo principal
+├── Tailwind CSS v4               → Estilos utilitarios, compatible con design tokens de la marca
+├── TypeScript                    → Tipado fuerte en todo el proyecto
+├── pnpm                          → Package manager rápido y eficiente en disco
+└── Integraciones
+    ├── @astrojs/sitemap          → SEO local (crítico para búsquedas "ferretería zona 9")
+    ├── @astrojs/check            → Type checking en componentes Astro
+    ├── astro-icon                → Sistema de iconos (Lucide via @iconify-json/lucide)
+    ├── @astrojs/image (futuro)   → Optimización de imágenes de productos
+    └── Partytown (futuro)        → Scripts de terceros (GA4, FB Pixel)
 ```
 
 ---
@@ -243,3 +245,35 @@ Dismafer compite en búsquedas locales de Guatemala:
 | CLS (Cumulative Layout Shift) | < 0.1 | Web Vitals |
 | FID / INP | < 100ms | Web Vitals |
 | JS Bundle size | < 50 KB | Astro build output |
+
+---
+
+## Seguridad
+
+### Postura de Seguridad
+
+El proyecto implementa prácticas de seguridad CISO-nivel:
+
+- ✅ **HTTPS obligatorio** — Encriptación end-to-end en tránsito
+- ✅ **Content Security Policy (CSP)** — Protección contra XSS e inyección de código
+- ✅ **HSTS (HTTP Strict-Transport-Security)** — Prevención de downgrade attacks
+- ✅ **X-Frame-Options: DENY** — Protección contra clickjacking
+- ✅ **X-Content-Type-Options: nosniff** — Prevención de MIME type sniffing
+- ✅ **Política de Privacidad (GDPR)** — Conformidad legal para datos personales
+- ✅ **Política de Seguridad** — Divulgación responsable de vulnerabilidades
+
+### Headers de Seguridad
+
+Se configura en hosting (Vercel/Netlify) vía:
+- `vercel.json` (Vercel)
+- `_headers` (Netlify)
+
+Ver [docs/security/deployment-security.md](../security/deployment-security.md) para detalles.
+
+### Auditoría CISO
+
+**Fecha:** Junio 10, 2026  
+**Hallazgos:** 0 CRITICAL, 5 HIGH (resueltos), 10 MEDIUM, 10 LOW  
+**Veredicto:** ✅ Seguro para producción
+
+Ver [docs/security/ciso-audit-2026.md](../security/ciso-audit-2026.md) para informe completo.
