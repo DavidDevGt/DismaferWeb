@@ -33,6 +33,7 @@ Rediseño y desarrollo del sitio web de Dismafer, ferretería con más de 20 añ
 | [Decisiones de Arquitectura](docs/architecture/decisions.md) | Stack, estructura de carpetas, islands, SEO, integraciones y performance targets |
 | [Setup Astro 5 + pnpm](docs/architecture/astro-setup.md)     | Guía completa de instalación, configuración y conceptos clave de Astro 5         |
 | [Investigación UX](docs/design/ux-research.md)               | Referentes mundiales, patrones UX, mobile-first y componentes priorizados        |
+| [Sistema de Iconos](docs/icons.md)                           | Lucide Icons via astro-icon, 24 iconos migrados, guía de uso                    |
 
 ## Stack Tecnológico
 
