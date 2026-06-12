@@ -54,6 +54,7 @@
     "@vercel/speed-insights": "^2.0.0",
     "astro": "^6.4.6",
     "astro-icon": "^1.1.5",
+    "leaflet": "^1.9.4",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {

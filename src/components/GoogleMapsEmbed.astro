@@ -6,19 +6,28 @@ interface Props {
 }
 
 const { height = 'h-80 lg:h-full' } = Astro.props;
-
-// Generar URL de embed dinámicamente basada en las coordenadas del config
 const { lat, lng } = siteConfig.contact.location;
-const embedUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d633.9298450192414!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a384903cd29f%3A0x8e03fd8e80e5b008!2sDismafer!5e0!3m2!1ses!2sgt!4v1781217079104!5m2!1ses!2sgt`;
+const mapId = `map-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
-<iframe
-  src={embedUrl}
-  width="100%"
-  height="100%"
-  class={`rounded-2xl border-0 shadow-lg ${height}`}
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"
-  title="Ubicación de Ferretería Dismafer en Zona 9, Guatemala">
-</iframe>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<div id={mapId} class={`rounded-2xl border-0 shadow-lg ${height}`}></div>
+
+<script define:vars={{ lat, lng, mapId }} is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.L) {
+      const map = L.map(mapId).setView([lat, lng], 15);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19,
+      }).addTo(map);
+
+      L.marker([lat, lng])
+        .addTo(map)
+        .bindPopup('<strong>Ferretería Dismafer</strong><br>2ª Calle 2-73, Zona 9');
+    }
+  });
+</script>
