@@ -32,6 +32,10 @@ export interface SiteConfig {
     address: string;
     addressShort: string;
     mapUrl: string;
+    location: {
+      lat: number;
+      lng: number;
+    };
   };
   hours: {
     weekdays: string;

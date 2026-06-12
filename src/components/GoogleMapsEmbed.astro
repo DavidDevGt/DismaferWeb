@@ -1,10 +1,15 @@
 ---
+import { siteConfig } from '../data/site';
+
 interface Props {
   height?: string;
 }
 
 const { height = 'h-80 lg:h-full' } = Astro.props;
-const embedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d633.9298450192414!2d-90.52240931775223!3d14.613900819573189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a384903cd29f%3A0x8e03fd8e80e5b008!2sDismafer!5e0!3m2!1ses!2sgt!4v1781217079104!5m2!1ses!2sgt';
+
+// Generar URL de embed dinámicamente basada en las coordenadas del config
+const { lat, lng } = siteConfig.contact.location;
+const embedUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d633.9298450192414!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a384903cd29f%3A0x8e03fd8e80e5b008!2sDismafer!5e0!3m2!1ses!2sgt!4v1781217079104!5m2!1ses!2sgt`;
 ---
 
 <iframe

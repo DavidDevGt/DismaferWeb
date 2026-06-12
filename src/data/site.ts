@@ -15,6 +15,10 @@ export const siteConfig: SiteConfig = {
     address: '2ª Calle 2-73, Zona 9, Ciudad de Guatemala, Guatemala',
     addressShort: '2ª Calle 2-73, Zona 9',
     mapUrl: 'https://maps.google.com/?q=Ferreteria+Dismafer+2a+Calle+2-73+Zona+9+Guatemala',
+    location: {
+      lat: 14.6140336299672,
+      lng: -90.52187499255433,
+    },
   },
   hours: {
     weekdays: '08:00 – 17:00',
