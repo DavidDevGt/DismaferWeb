@@ -17,11 +17,38 @@ concurrency:
 
 env:
   NODE_VERSION: '22'
-  PNPM_VERSION: '10'
 
 jobs:
   # ─────────────────────────────────────────────
-  # JOB 1: Type Check
+  # JOB 1: Lint (ESLint + Prettier check)
+  # ─────────────────────────────────────────────
+  lint:
+    name: 🔎 Lint (ESLint + Prettier)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: ESLint
+        run: pnpm lint
+
+      - name: Prettier check
+        run: pnpm format:check
+
+  # ─────────────────────────────────────────────
+  # JOB 2: Type Check
   # ─────────────────────────────────────────────
   typecheck:
     name: 🔍 Type Check
@@ -32,8 +59,6 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: ${{ env.PNPM_VERSION }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -48,22 +73,19 @@ jobs:
         run: pnpm check
 
   # ─────────────────────────────────────────────
-  # JOB 2: Unit Tests + Coverage
+  # JOB 3: Unit Tests + Coverage
   # ─────────────────────────────────────────────
   unit-tests:
     name: 🧪 Unit Tests (Vitest)
     runs-on: ubuntu-latest
     outputs:
       tests-passed: ${{ steps.run-tests.outputs.passed }}
-      coverage-pct: ${{ steps.run-tests.outputs.coverage }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: ${{ env.PNPM_VERSION }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -80,9 +102,9 @@ jobs:
           pnpm test:ci 2>&1 | tee unit-output.txt
           PASSED=$(grep -oP '\d+ passed' unit-output.txt | head -1 | grep -oP '\d+' || echo "0")
           echo "passed=$PASSED" >> $GITHUB_OUTPUT
-          echo "coverage=100" >> $GITHUB_OUTPUT
 
       - name: Build summary
+        if: always()
         run: |
           echo "## 🧪 Unit Tests" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -92,9 +114,8 @@ jobs:
           FAILED=$(grep -oP '\d+ failed' unit-output.txt | head -1 || echo "0 failed")
           echo "| ✅ Pasaron | **$PASSED** |" >> $GITHUB_STEP_SUMMARY
           echo "| ❌ Fallaron | **$FAILED** |" >> $GITHUB_STEP_SUMMARY
-          echo "| 📊 Cobertura (lines) | **100%** |" >> $GITHUB_STEP_SUMMARY
 
-      - name: Upload coverage HTML artifact
+      - name: Upload coverage HTML
         uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -102,7 +123,7 @@ jobs:
           path: coverage/
           retention-days: 30
 
-      - name: Upload JUnit XML artifact
+      - name: Upload JUnit unit
         uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -118,7 +139,7 @@ jobs:
           json-final-path: coverage/coverage-final.json
 
   # ─────────────────────────────────────────────
-  # JOB 3: Build
+  # JOB 4: Build
   # ─────────────────────────────────────────────
   build:
     name: 🏗️ Build (Astro)
@@ -129,8 +150,6 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: ${{ env.PNPM_VERSION }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -144,7 +163,7 @@ jobs:
       - name: Build site
         run: pnpm build
 
-      - name: Upload dist artifact
+      - name: Upload dist
         uses: actions/upload-artifact@v4
         with:
           name: dist-${{ github.run_number }}
@@ -160,10 +179,10 @@ jobs:
           echo "| Métrica | Valor |" >> $GITHUB_STEP_SUMMARY
           echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
           echo "| 📄 Páginas | **$PAGE_COUNT** |" >> $GITHUB_STEP_SUMMARY
-          echo "| 📦 Tamaño | **$DIST_SIZE** |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📦 Tamaño  | **$DIST_SIZE** |" >> $GITHUB_STEP_SUMMARY
 
   # ─────────────────────────────────────────────
-  # JOB 4: E2E Tests (Playwright) — matrix 3 viewports
+  # JOB 5: E2E Tests — matrix 3 viewports
   # ─────────────────────────────────────────────
   e2e:
     name: 🎭 E2E — ${{ matrix.project }}
@@ -174,14 +193,14 @@ jobs:
       matrix:
         include:
           - project: 'Desktop Chrome'
-            slug: 'desktop-chrome'
-            browser: 'chromium'
+            slug: desktop-chrome
+            browser: chromium
           - project: 'Mobile Chrome (Pixel 5)'
-            slug: 'pixel-5'
-            browser: 'chromium'
+            slug: pixel-5
+            browser: chromium
           - project: 'Mobile Safari (iPhone 12)'
-            slug: 'iphone-12'
-            browser: 'webkit'
+            slug: iphone-12
+            browser: webkit
 
     steps:
       - name: Checkout
@@ -189,8 +208,6 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: ${{ env.PNPM_VERSION }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -201,7 +218,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Install Playwright browser — ${{ matrix.browser }}
+      - name: Install Playwright browser
         run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
 
       - name: Download built site
@@ -210,7 +227,7 @@ jobs:
           name: dist-${{ github.run_number }}
           path: dist/
 
-      - name: Run E2E tests — ${{ matrix.project }}
+      - name: Run E2E — ${{ matrix.project }}
         run: pnpm test:e2e:ci --project="${{ matrix.project }}"
         env:
           CI: true
@@ -219,17 +236,15 @@ jobs:
         if: always()
         run: |
           echo "## 🎭 E2E — ${{ matrix.project }}" >> $GITHUB_STEP_SUMMARY
-          RESULT_FILE="test-results/results.json"
-          if [ -f "$RESULT_FILE" ]; then
+          if [ -f "test-results/results.json" ]; then
             PASSED=$(node -e "const r=require('./test-results/results.json'); console.log(r.stats?.expected ?? '?')" 2>/dev/null || echo "?")
             FAILED=$(node -e "const r=require('./test-results/results.json'); console.log(r.stats?.unexpected ?? '?')" 2>/dev/null || echo "?")
-            echo "| Resultado | Valor |" >> $GITHUB_STEP_SUMMARY
-            echo "|-----------|-------|" >> $GITHUB_STEP_SUMMARY
+            echo "| | |" >> $GITHUB_STEP_SUMMARY
+            echo "|---|---|" >> $GITHUB_STEP_SUMMARY
             echo "| ✅ Pasaron | **$PASSED** |" >> $GITHUB_STEP_SUMMARY
             echo "| ❌ Fallaron | **$FAILED** |" >> $GITHUB_STEP_SUMMARY
           fi
 
-      # ── Subir todos los artefactos de Playwright ──────────────
       - name: Upload Playwright HTML report
         uses: actions/upload-artifact@v4
         if: always()
@@ -246,7 +261,7 @@ jobs:
           path: test-results/
           retention-days: 14
 
-      - name: Upload JUnit XML
+      - name: Upload JUnit E2E
         uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -255,7 +270,7 @@ jobs:
           retention-days: 30
 
   # ─────────────────────────────────────────────
-  # JOB 5: Guardar artefactos en rama ci/test-artifacts
+  # JOB 6: Guardar artefactos en rama ci/test-artifacts
   # ─────────────────────────────────────────────
   save-to-repo:
     name: 💾 Guardar artefactos en repo
@@ -266,7 +281,7 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout rama principal (para acceso al repo)
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -274,39 +289,30 @@ jobs:
       - name: Checkout rama ci/test-artifacts
         run: |
           git fetch origin ci/test-artifacts 2>/dev/null || true
-          git worktree add /tmp/artifacts-branch ci/test-artifacts 2>/dev/null || \
-          git worktree add --orphan -b ci/test-artifacts /tmp/artifacts-branch
+          if git rev-parse --verify origin/ci/test-artifacts >/dev/null 2>&1; then
+            git branch ci/test-artifacts origin/ci/test-artifacts 2>/dev/null || \
+              git branch -f ci/test-artifacts origin/ci/test-artifacts
+            git worktree add /tmp/artifacts-branch ci/test-artifacts
+          else
+            git worktree add --orphan -b ci/test-artifacts /tmp/artifacts-branch
+          fi
 
-      - name: Preparar directorios de artefactos
+      - name: Preparar estructura de directorios
         run: |
           RUN="${{ github.run_number }}"
           DATE=$(date +%Y-%m-%d)
           SHA="${{ github.sha }}"
-          SHORT_SHA=$(echo "$SHA" | cut -c1-7)
 
-          mkdir -p /tmp/artifacts-branch/${DATE}/run-${RUN}/unit/coverage
-          mkdir -p /tmp/artifacts-branch/${DATE}/run-${RUN}/unit/junit
-          mkdir -p /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/desktop-chrome/playwright-report
-          mkdir -p /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/desktop-chrome/test-results
-          mkdir -p /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/pixel-5/playwright-report
-          mkdir -p /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/pixel-5/test-results
-          mkdir -p /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/iphone-12/playwright-report
-          mkdir -p /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/iphone-12/test-results
-          mkdir -p /tmp/artifacts-branch/latest/unit/coverage
-          mkdir -p /tmp/artifacts-branch/latest/e2e/desktop-chrome
-          mkdir -p /tmp/artifacts-branch/latest/e2e/pixel-5
-          mkdir -p /tmp/artifacts-branch/latest/e2e/iphone-12
+          mkdir -p /tmp/artifacts-branch/${DATE}/run-${RUN}/{unit/{coverage,junit},e2e/{desktop-chrome,pixel-5,iphone-12}/{playwright-report,test-results}}
+          mkdir -p /tmp/artifacts-branch/latest/{unit/coverage,e2e/{desktop-chrome,pixel-5,iphone-12}}
 
-          # Escribir metadata del run
           cat > /tmp/artifacts-branch/${DATE}/run-${RUN}/meta.json << EOF
           {
             "run": "$RUN",
             "date": "$DATE",
             "sha": "$SHA",
-            "shortSha": "$SHORT_SHA",
             "branch": "${{ github.ref_name }}",
             "actor": "${{ github.actor }}",
-            "workflow": "${{ github.workflow }}",
             "unitTestsResult": "${{ needs.unit-tests.result }}",
             "e2eResult": "${{ needs.e2e.result }}"
           }
@@ -315,126 +321,110 @@ jobs:
           echo "RUN=$RUN" >> $GITHUB_ENV
           echo "DATE=$DATE" >> $GITHUB_ENV
 
-      - name: Descargar coverage (unit tests)
+      - name: Descargar coverage
         uses: actions/download-artifact@v4
         if: needs.unit-tests.result == 'success'
+        continue-on-error: true
         with:
           name: coverage-html-${{ github.run_number }}
           path: /tmp/dl-coverage
 
-      - name: Copiar coverage al repo
-        if: needs.unit-tests.result == 'success'
-        run: |
-          cp -r /tmp/dl-coverage/. /tmp/artifacts-branch/${DATE}/run-${RUN}/unit/coverage/
-          cp -r /tmp/dl-coverage/. /tmp/artifacts-branch/latest/unit/coverage/
-
       - name: Descargar JUnit unit
         uses: actions/download-artifact@v4
         if: needs.unit-tests.result == 'success'
+        continue-on-error: true
         with:
           name: junit-unit-${{ github.run_number }}
           path: /tmp/dl-junit-unit
 
-      - name: Copiar JUnit unit al repo
-        if: needs.unit-tests.result == 'success'
+      - name: Copiar unit artifacts
+        if: always()
         run: |
-          cp /tmp/dl-junit-unit/junit-unit.xml /tmp/artifacts-branch/${DATE}/run-${RUN}/unit/junit/
-          cp /tmp/dl-junit-unit/junit-unit.xml /tmp/artifacts-branch/latest/unit/
+          [ -d /tmp/dl-coverage ] && cp -r /tmp/dl-coverage/. /tmp/artifacts-branch/${DATE}/run-${RUN}/unit/coverage/ && cp -r /tmp/dl-coverage/. /tmp/artifacts-branch/latest/unit/coverage/ || true
+          [ -f /tmp/dl-junit-unit/junit-unit.xml ] && cp /tmp/dl-junit-unit/junit-unit.xml /tmp/artifacts-branch/${DATE}/run-${RUN}/unit/junit/ && cp /tmp/dl-junit-unit/junit-unit.xml /tmp/artifacts-branch/latest/unit/ || true
 
-      # ── E2E Desktop Chrome ──────────────────────────────────────
-      - name: Descargar playwright-report Desktop Chrome
+      - name: Descargar E2E — Desktop Chrome
         uses: actions/download-artifact@v4
         if: always()
         continue-on-error: true
         with:
           name: playwright-report-desktop-chrome-${{ github.run_number }}
-          path: /tmp/dl-report-desktop
+          path: /tmp/dl-rpt-desktop
 
-      - name: Descargar playwright-artifacts Desktop Chrome
+      - name: Descargar artifacts — Desktop Chrome
         uses: actions/download-artifact@v4
         if: always()
         continue-on-error: true
         with:
           name: playwright-artifacts-desktop-chrome-${{ github.run_number }}
-          path: /tmp/dl-artifacts-desktop
+          path: /tmp/dl-art-desktop
 
-      - name: Copiar E2E Desktop Chrome al repo
-        if: always()
-        run: |
-          [ -d /tmp/dl-report-desktop ] && cp -r /tmp/dl-report-desktop/. /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/desktop-chrome/playwright-report/ || true
-          [ -d /tmp/dl-artifacts-desktop ] && cp -r /tmp/dl-artifacts-desktop/. /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/desktop-chrome/test-results/ || true
-          [ -d /tmp/dl-report-desktop ] && cp -r /tmp/dl-report-desktop/. /tmp/artifacts-branch/latest/e2e/desktop-chrome/ || true
-
-      # ── E2E Pixel 5 ─────────────────────────────────────────────
-      - name: Descargar playwright-report Pixel 5
+      - name: Descargar E2E — Pixel 5
         uses: actions/download-artifact@v4
         if: always()
         continue-on-error: true
         with:
           name: playwright-report-pixel-5-${{ github.run_number }}
-          path: /tmp/dl-report-pixel5
+          path: /tmp/dl-rpt-pixel5
 
-      - name: Descargar playwright-artifacts Pixel 5
+      - name: Descargar artifacts — Pixel 5
         uses: actions/download-artifact@v4
         if: always()
         continue-on-error: true
         with:
           name: playwright-artifacts-pixel-5-${{ github.run_number }}
-          path: /tmp/dl-artifacts-pixel5
+          path: /tmp/dl-art-pixel5
 
-      - name: Copiar E2E Pixel 5 al repo
-        if: always()
-        run: |
-          [ -d /tmp/dl-report-pixel5 ] && cp -r /tmp/dl-report-pixel5/. /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/pixel-5/playwright-report/ || true
-          [ -d /tmp/dl-artifacts-pixel5 ] && cp -r /tmp/dl-artifacts-pixel5/. /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/pixel-5/test-results/ || true
-          [ -d /tmp/dl-report-pixel5 ] && cp -r /tmp/dl-report-pixel5/. /tmp/artifacts-branch/latest/e2e/pixel-5/ || true
-
-      # ── E2E iPhone 12 ───────────────────────────────────────────
-      - name: Descargar playwright-report iPhone 12
+      - name: Descargar E2E — iPhone 12
         uses: actions/download-artifact@v4
         if: always()
         continue-on-error: true
         with:
           name: playwright-report-iphone-12-${{ github.run_number }}
-          path: /tmp/dl-report-iphone
+          path: /tmp/dl-rpt-iphone
 
-      - name: Descargar playwright-artifacts iPhone 12
+      - name: Descargar artifacts — iPhone 12
         uses: actions/download-artifact@v4
         if: always()
         continue-on-error: true
         with:
           name: playwright-artifacts-iphone-12-${{ github.run_number }}
-          path: /tmp/dl-artifacts-iphone
+          path: /tmp/dl-art-iphone
 
-      - name: Copiar E2E iPhone 12 al repo
+      - name: Copiar E2E artifacts al repo
         if: always()
         run: |
-          [ -d /tmp/dl-report-iphone ] && cp -r /tmp/dl-report-iphone/. /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/iphone-12/playwright-report/ || true
-          [ -d /tmp/dl-artifacts-iphone ] && cp -r /tmp/dl-artifacts-iphone/. /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/iphone-12/test-results/ || true
-          [ -d /tmp/dl-report-iphone ] && cp -r /tmp/dl-report-iphone/. /tmp/artifacts-branch/latest/e2e/iphone-12/ || true
+          copy_if() { [ -d "$1" ] && cp -r "$1/." "$2/" || true; }
+          copy_if /tmp/dl-rpt-desktop  /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/desktop-chrome/playwright-report
+          copy_if /tmp/dl-art-desktop  /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/desktop-chrome/test-results
+          copy_if /tmp/dl-rpt-desktop  /tmp/artifacts-branch/latest/e2e/desktop-chrome
+          copy_if /tmp/dl-rpt-pixel5   /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/pixel-5/playwright-report
+          copy_if /tmp/dl-art-pixel5   /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/pixel-5/test-results
+          copy_if /tmp/dl-rpt-pixel5   /tmp/artifacts-branch/latest/e2e/pixel-5
+          copy_if /tmp/dl-rpt-iphone   /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/iphone-12/playwright-report
+          copy_if /tmp/dl-art-iphone   /tmp/artifacts-branch/${DATE}/run-${RUN}/e2e/iphone-12/test-results
+          copy_if /tmp/dl-rpt-iphone   /tmp/artifacts-branch/latest/e2e/iphone-12
 
-      # ── Commit y push ────────────────────────────────────────────
-      - name: Commit y push artefactos al repo
+      - name: Commit y push al repo
         run: |
           cd /tmp/artifacts-branch
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-
           if git diff --cached --quiet; then
-            echo "No hay artefactos nuevos para commitear"
+            echo "Sin artefactos nuevos"
           else
-            git commit -m "ci: run #${{ github.run_number }} — ${{ github.ref_name }} (${{ github.sha }})"
+            git commit -m "ci: run #${{ github.run_number }} — ${{ github.ref_name }}"
             git push origin ci/test-artifacts
-            echo "✅ Artefactos commiteados en ci/test-artifacts" >> $GITHUB_STEP_SUMMARY
+            echo "✅ Artefactos en ci/test-artifacts" >> $GITHUB_STEP_SUMMARY
           fi
 
   # ─────────────────────────────────────────────
-  # JOB 6: Quality Gate (resumen final)
+  # JOB 7: Quality Gate
   # ─────────────────────────────────────────────
   quality-gate:
     name: ✅ Quality Gate
-    needs: [typecheck, unit-tests, build, e2e, save-to-repo]
+    needs: [lint, typecheck, unit-tests, build, e2e, save-to-repo]
     runs-on: ubuntu-latest
     if: always()
     steps:
@@ -444,21 +434,22 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Job | Estado |" >> $GITHUB_STEP_SUMMARY
           echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
-          echo "| 🔍 Type Check   | ${{ needs.typecheck.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🧪 Unit Tests   | ${{ needs.unit-tests.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🏗️ Build        | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🎭 E2E Tests    | ${{ needs.e2e.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 💾 Save Artifacts | ${{ needs.save-to-repo.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🔎 Lint          | ${{ needs.lint.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🔍 Type Check    | ${{ needs.typecheck.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🧪 Unit Tests    | ${{ needs.unit-tests.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🏗️ Build         | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🎭 E2E           | ${{ needs.e2e.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 💾 Artifacts     | ${{ needs.save-to-repo.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "📦 **Artefactos guardados en:** [\`ci/test-artifacts\`](../../tree/ci/test-artifacts/latest)" >> $GITHUB_STEP_SUMMARY
+          echo "📦 [Ver artefactos en ci/test-artifacts](../../tree/ci/test-artifacts/latest)" >> $GITHUB_STEP_SUMMARY
 
-          if [[ "${{ needs.typecheck.result }}" != "success" || \
+          if [[ "${{ needs.lint.result }}" != "success" || \
+                "${{ needs.typecheck.result }}" != "success" || \
                 "${{ needs.unit-tests.result }}" != "success" || \
                 "${{ needs.build.result }}" != "success" || \
                 "${{ needs.e2e.result }}" != "success" ]]; then
-            echo "" >> $GITHUB_STEP_SUMMARY
             echo "❌ **Quality Gate FAILED**" >> $GITHUB_STEP_SUMMARY
             exit 1
           fi
 
-          echo "✅ **Quality Gate PASSED** — todos los checks superados." >> $GITHUB_STEP_SUMMARY
+          echo "✅ **Quality Gate PASSED**" >> $GITHUB_STEP_SUMMARY

@@ -39,14 +39,6 @@ describe('Site config', () => {
       expect(siteConfig.contact.whatsappUrl).toMatch(/^https:\/\/wa\.me\//);
     });
 
-    it('debe tener email válido', () => {
-      expect(siteConfig.contact.email).toMatch(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-    });
-
-    it('email debe ser del dominio dismafer.shop', () => {
-      expect(siteConfig.contact.email).toMatch(/@dismafer\.shop$/);
-    });
-
     it('debe tener dirección completa', () => {
       expect(siteConfig.contact.address).toBeTruthy();
       expect(siteConfig.contact.address.length).toBeGreaterThan(10);

@@ -5,9 +5,8 @@ export interface Category {
   name: string;
   slug: string;
   description: string;
-  icon: string;         // SVG path data
-  color: string;        // Tailwind bg class
-  productCount?: number;
+  icon: string; // SVG path data
+  color: string; // Tailwind bg class
 }
 
 export interface Brand {
@@ -20,20 +19,6 @@ export interface Brand {
   country: string;
 }
 
-export interface Product {
-  id: string;
-  name: string;
-  slug: string;
-  categoryId: string;
-  brandId: string;
-  description: string;
-  shortDescription: string;
-  imageUrl?: string;
-  featured: boolean;
-  tags: string[];
-  available: boolean;
-}
-
 export interface SiteConfig {
   name: string;
   tagline: string;
@@ -44,10 +29,13 @@ export interface SiteConfig {
     phoneDisplay: string;
     whatsapp: string;
     whatsappUrl: string;
-    email: string;
     address: string;
     addressShort: string;
     mapUrl: string;
+    location: {
+      lat: number;
+      lng: number;
+    };
   };
   hours: {
     weekdays: string;

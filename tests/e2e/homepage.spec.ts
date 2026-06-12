@@ -28,7 +28,7 @@ test.describe('Homepage — /', () => {
   });
 
   test('Hero — debe tener CTA de WhatsApp visible', async ({ page }) => {
-    const waLink = page.locator('a[href*="wa.me"]').first();
+    const waLink = page.locator('main a[href*="wa.me"]').first();
     await expect(waLink).toBeVisible();
   });
 
@@ -39,7 +39,6 @@ test.describe('Homepage — /', () => {
   });
 
   test('Categorías — debe mostrar las 6 categorías', async ({ page }) => {
-    // Espera que haya links a las 6 categorías
     const categoryLinks = [
       '/productos/herramienta-manual',
       '/productos/herramienta-electrica',
@@ -49,7 +48,7 @@ test.describe('Homepage — /', () => {
       '/productos/materiales-construccion',
     ];
     for (const href of categoryLinks) {
-      const link = page.locator(`a[href="${href}"]`);
+      const link = page.locator(`a[href="${href}"]`).first();
       await expect(link).toBeVisible();
     }
   });

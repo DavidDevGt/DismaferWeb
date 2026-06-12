@@ -115,8 +115,8 @@ pnpm astro add tailwind
 # Sitemap automático (SEO local)
 pnpm astro add sitemap
 
-# Optimización de imágenes
-pnpm astro add image
+# Sistema de iconos (Lucide Icons)
+pnpm add astro-icon @iconify-json/lucide
 
 # Iniciar servidor de desarrollo
 pnpm dev
@@ -130,12 +130,14 @@ pnpm dev
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
+import icon from 'astro-icon';
 
 export default defineConfig({
   site: 'https://dismafer.shop',
   integrations: [
     tailwind(),
     sitemap(),
+    icon(),
   ],
   image: {
     domains: ['dismafer.shop'],

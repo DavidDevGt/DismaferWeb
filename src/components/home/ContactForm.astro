@@ -1,0 +1,264 @@
+---
+import Container from '../ui/Container.astro';
+import { categories } from '../../data/index';
+---
+
+<section class="py-16 bg-white">
+  <Container>
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-accent font-semibold text-sm uppercase tracking-wider">Formulario</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-primary mt-2">
+          Cuéntanos tu necesidad
+        </h2>
+        <p class="text-neutral mt-3">
+          Completa el formulario y nos pondremos en contacto en menos de 2 horas.
+        </p>
+      </div>
+
+      <form id="contactForm" class="space-y-6">
+        <!-- Nombre -->
+        <div class="form-group">
+          <label for="name" class="block text-sm font-semibold text-primary mb-2">
+            Nombre completo
+            <span class="text-red-500" aria-label="requerido">*</span>
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            minlength="3"
+            placeholder="Tu nombre"
+            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all"
+            aria-describedby="nameError"
+          />
+          <span id="nameError" class="text-red-500 text-sm mt-1 hidden"></span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email" class="block text-sm font-semibold text-primary mb-2">
+            Correo electrónico
+            <span class="text-red-500" aria-label="requerido">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="tu@email.com"
+            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all"
+            aria-describedby="emailError"
+          />
+          <span id="emailError" class="text-red-500 text-sm mt-1 hidden"></span>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="form-group">
+          <label for="phone" class="block text-sm font-semibold text-primary mb-2">
+            Teléfono o WhatsApp
+            <span class="text-red-500" aria-label="requerido">*</span>
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            placeholder="(502) XXXX-XXXX"
+            pattern="[0-9\s\-\+\(\)]+"
+            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all"
+            aria-describedby="phoneError"
+          />
+          <span id="phoneError" class="text-red-500 text-sm mt-1 hidden"></span>
+        </div>
+
+        <!-- Categoría -->
+        <div class="form-group">
+          <label for="category" class="block text-sm font-semibold text-primary mb-2">
+            Categoría de interés
+            <span class="text-red-500" aria-label="requerido">*</span>
+          </label>
+          <select
+            id="category"
+            name="category"
+            required
+            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all appearance-none bg-white"
+            aria-describedby="categoryError"
+          >
+            <option value="">Selecciona una categoría</option>
+            {categories.map((cat) => <option value={cat.slug}>{cat.name}</option>)}
+            <option value="otro">Otro</option>
+          </select>
+          <span id="categoryError" class="text-red-500 text-sm mt-1 hidden"></span>
+        </div>
+
+        <!-- Mensaje -->
+        <div class="form-group">
+          <label for="message" class="block text-sm font-semibold text-primary mb-2">
+            Tu mensaje o pregunta
+            <span class="text-red-500" aria-label="requerido">*</span>
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            minlength="10"
+            rows="5"
+            placeholder="Cuéntanos qué necesitas..."
+            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all resize-none"
+            aria-describedby="messageError"
+          ></textarea>
+          <span id="messageError" class="text-red-500 text-sm mt-1 hidden"></span>
+        </div>
+
+        <!-- Aviso de privacidad -->
+        <div class="flex items-start gap-3">
+          <input
+            type="checkbox"
+            id="privacy"
+            name="privacy"
+            required
+            class="w-5 h-5 border border-gray-200 rounded text-primary focus:ring-blue-900 cursor-pointer mt-0.5"
+            aria-describedby="privacyError"
+          />
+          <label for="privacy" class="text-sm text-neutral cursor-pointer">
+            He leído y acepto la <a href="/privacidad" class="text-blue-600 hover:text-blue-800 underline">política de privacidad</a> y que Dismafer se comunique conmigo
+            <span class="text-red-500">*</span>
+          </label>
+        </div>
+        <span id="privacyError" class="text-red-500 text-sm mt-1 hidden block"></span>
+
+        <!-- Mensaje de estado -->
+        <div id="formStatus" class="hidden p-4 rounded-xl text-sm font-medium" role="status"></div>
+
+        <!-- Submit -->
+        <div class="flex gap-3 pt-4">
+          <button
+            type="submit"
+            id="submitBtn"
+            class="flex-1 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Enviar mensaje
+          </button>
+          <button
+            type="reset"
+            class="px-6 py-3 border border-gray-200 text-primary font-semibold rounded-xl hover:bg-slate-50 transition-colors"
+          >
+            Limpiar
+          </button>
+        </div>
+      </form>
+    </div>
+  </Container>
+</section>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const formStatus = document.getElementById('formStatus') as HTMLDivElement;
+
+  if (form) {
+    // Validación en tiempo real
+    const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
+    inputs.forEach((input) => {
+      input.addEventListener('blur', validateField);
+      input.addEventListener('change', validateField);
+    });
+
+    // Submit: el sitio es estático, el mensaje se envía vía WhatsApp
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (!validateForm()) return;
+
+      const formData = new FormData(form);
+      const categorySelect = form.querySelector('#category') as HTMLSelectElement;
+      const categoryLabel = categorySelect.selectedOptions[0]?.textContent ?? '';
+
+      const message = [
+        `Nombre: ${formData.get('name')}`,
+        `Email: ${formData.get('email')}`,
+        `Teléfono: ${formData.get('phone')}`,
+        `Categoría: ${categoryLabel}`,
+        `Mensaje: ${formData.get('message')}`,
+      ].join('\n');
+
+      window.open(
+        `https://wa.me/50258330848?text=${encodeURIComponent(message)}`,
+        '_blank',
+        'noopener,noreferrer'
+      );
+      showStatus('success', '¡Listo! Se abrió WhatsApp con tu mensaje. Envíalo para contactarnos.');
+      form.reset();
+    });
+  }
+
+  function validateField(e: Event) {
+    const input = e.target as HTMLInputElement;
+    const errorEl = document.getElementById(`${input.id}Error`);
+
+    if (!errorEl) return;
+
+    let isValid = true;
+    let errorMsg = '';
+
+    if (input.type === 'email') {
+      isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+      errorMsg = 'Email inválido';
+    } else if (input.type === 'tel') {
+      isValid = /[0-9\s\-+()]{8,}/.test(input.value);
+      errorMsg = 'Teléfono inválido';
+    } else if (input.required && !input.value.trim()) {
+      isValid = false;
+      errorMsg = 'Campo requerido';
+    } else if (input.minLength && input.value.length < input.minLength) {
+      isValid = false;
+      errorMsg = `Mínimo ${input.minLength} caracteres`;
+    }
+
+    if (!isValid) {
+      input.classList.add('border-red-500');
+      errorEl.textContent = errorMsg;
+      errorEl.classList.remove('hidden');
+    } else {
+      input.classList.remove('border-red-500');
+      errorEl.classList.add('hidden');
+    }
+  }
+
+  function validateForm(): boolean {
+    const fields = form.querySelectorAll('input[required], textarea[required], select[required]');
+    const privacy = form.querySelector('input[name="privacy"]') as HTMLInputElement;
+    let isValid = true;
+
+    fields.forEach((field) => {
+      const event = new Event('blur');
+      field.dispatchEvent(event);
+      if ((field as HTMLInputElement).classList.contains('border-red-500')) {
+        isValid = false;
+      }
+    });
+
+    // Validar checkbox de privacidad
+    if (!privacy.checked) {
+      const privacyError = document.getElementById('privacyError');
+      if (privacyError) {
+        privacyError.textContent = 'Debes aceptar los términos';
+        privacyError.classList.remove('hidden');
+      }
+      isValid = false;
+    }
+
+    return isValid;
+  }
+
+  function showStatus(type: 'success' | 'error', message: string) {
+    formStatus.className = `${
+      type === 'success'
+        ? 'bg-green-50 text-green-800 border border-green-200'
+        : 'bg-red-50 text-red-800 border border-red-200'
+    } p-4 rounded-xl text-sm font-medium`;
+    formStatus.textContent = message;
+    formStatus.classList.remove('hidden');
+  }
+</script>

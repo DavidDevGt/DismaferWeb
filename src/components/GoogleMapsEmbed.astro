@@ -1,0 +1,33 @@
+---
+import { siteConfig } from '../data/site';
+
+interface Props {
+  height?: string;
+}
+
+const { height = 'h-80 lg:h-full' } = Astro.props;
+const { lat, lng } = siteConfig.contact.location;
+const mapId = `map-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<div id={mapId} class={`rounded-2xl border-0 shadow-lg ${height}`}></div>
+
+<script define:vars={{ lat, lng, mapId }} is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.L) {
+      const map = L.map(mapId).setView([lat, lng], 15);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19,
+      }).addTo(map);
+
+      L.marker([lat, lng])
+        .addTo(map)
+        .bindPopup('<strong>Ferretería Dismafer</strong><br>2ª Calle 2-73, Zona 9');
+    }
+  });
+</script>

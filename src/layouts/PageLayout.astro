@@ -12,6 +12,7 @@ interface Props {
 }
 const { title, description, image, noindex } = Astro.props;
 ---
+
 <BaseLayout title={title} description={description} image={image} noindex={noindex}>
   <Header />
   <main>

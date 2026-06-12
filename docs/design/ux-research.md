@@ -94,7 +94,7 @@ El referente global en UX para ferreterías online. Destaca por:
 2. **Logos de marcas reconocidas** — Truper, Stanley, Tramontina
 3. **Dirección física verificable** — Zona 9 con Google Maps
 4. **Teléfono y WhatsApp visibles** — no esconder el contacto
-5. **Horarios claros** — Lun–Vie 7–17:30, Sáb 7–14
+5. **Horarios claros** — Lun–Vie 7–17:00, Sáb 7–14
 6. **Slogan de garantía** — "Si no lo tenemos, te lo conseguimos"
 
 ---

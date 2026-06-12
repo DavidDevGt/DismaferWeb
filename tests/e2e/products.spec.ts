@@ -32,7 +32,7 @@ test.describe('Página de Productos — /productos', () => {
   });
 
   test('debe tener CTA de WhatsApp para consultas', async ({ page }) => {
-    const waLink = page.locator('a[href*="wa.me"]').first();
+    const waLink = page.locator('main a[href*="wa.me"]').first();
     await expect(waLink).toBeVisible();
   });
 });
@@ -52,14 +52,13 @@ test.describe('Páginas de categoría — /productos/[categoria]', () => {
 
     test(`/productos/${cat.slug} — debe tener breadcrumb con link a /productos`, async ({ page }) => {
       await page.goto(`/productos/${cat.slug}`);
-      const productosLink = page.locator('a[href="/productos"]');
+      const productosLink = page.locator('nav[aria-label="Breadcrumb"] a[href="/productos"]');
       await expect(productosLink).toBeVisible();
     });
 
     test(`/productos/${cat.slug} — debe tener al menos 1 CTA de WhatsApp`, async ({ page }) => {
       await page.goto(`/productos/${cat.slug}`);
-      const waLinks = page.locator('a[href*="wa.me"]');
-      const count = await waLinks.count();
+      const count = await page.locator('a[href*="wa.me"]').count();
       expect(count).toBeGreaterThanOrEqual(1);
     });
   }

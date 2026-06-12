@@ -24,13 +24,9 @@ export default defineConfig({
     include: ['src/tests/**/*.test.ts', 'src/tests/**/*.spec.ts'],
 
     /* Reporters: verbose siempre; JUnit solo en CI */
-    reporters: isCI
-      ? ['verbose', ['junit', { suiteName: 'Unit — DismaferWeb' }]]
-      : ['verbose'],
+    reporters: isCI ? ['verbose', ['junit', { suiteName: 'Unit — DismaferWeb' }]] : ['verbose'],
 
-    outputFile: isCI
-      ? { junit: 'test-results/junit-unit.xml' }
-      : undefined,
+    outputFile: isCI ? { junit: 'test-results/junit-unit.xml' } : undefined,
 
     coverage: {
       provider: 'v8',
@@ -40,9 +36,7 @@ export default defineConfig({
       exclude: ['src/tests/**', 'node_modules/**'],
 
       /* Reporters */
-      reporter: isCI
-        ? ['text', 'json', 'json-summary', 'html', 'lcov']
-        : ['text', 'json', 'html'],
+      reporter: isCI ? ['text', 'json', 'json-summary', 'html', 'lcov'] : ['text', 'json', 'html'],
 
       /* Umbrales de calidad — CI falla si no se alcanzan */
       thresholds: {
